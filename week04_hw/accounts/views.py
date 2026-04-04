@@ -34,3 +34,6 @@ def logout(request):
     if request.user.is_authenticated:
         auth_logout(request) # 로그아웃 실행
         return redirect("login") # 로그인으로 이동
+    
+def mypage(request):
+    return render(request, "mypage.html") # 마이페이지 화면 렌더링
