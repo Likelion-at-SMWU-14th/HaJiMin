@@ -24,6 +24,8 @@ def login(request):
         if user is not None: # 존재하는 사용자인 경우
             auth_login(request, user) # 장고 기본 로그인 메소드 
             return redirect("main") # main으로 이동
+        else: # 로그인 실패 시 
+            return redirect("main")
     
     return render(request, "login.html") # 로그인 화면 렌더링
 
