@@ -26,3 +26,6 @@ def login(request):
             return redirect("main") # main으로 이동
     
     return render(request, "login.html") # 로그인 화면 렌더링
+
+def main(request):
+    return render(request, "main.html") # 메인 화면 렌더링
