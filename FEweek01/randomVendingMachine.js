@@ -23,3 +23,8 @@ const drPepper = {
 const drinks = [fanta, coke, sprite, milkis, drPepper];
 let balance = 6500;
 
+// 음료 랜덤 선택 함수
+function getRandomDrink(arr) {
+    let result_index = Math.floor(Math.random() * arr.length);
+    return arr[result_index];
+}
