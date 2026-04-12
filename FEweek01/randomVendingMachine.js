@@ -28,3 +28,15 @@ function getRandomDrink(arr) {
     let result_index = Math.floor(Math.random() * arr.length);
     return arr[result_index];
 }
+
+// 출력 문자열 반환 함수 
+function printComment(selected_drink) {
+    if (selected_drink.price <= balance) {
+        balance -= selected_drink.price;
+        console.log(
+            `${selected_drink.name} 음료가 나왔어요! (가격: ${selected_drink.price}원)\n지갑에 남은 돈: ${balance}원`
+        );  
+    } else {
+        console.log(`돈이 부족해요! 음료를 살 수 없어요!`);
+    } 
+}
