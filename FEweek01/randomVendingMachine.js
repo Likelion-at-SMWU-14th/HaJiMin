@@ -49,3 +49,6 @@ function buyDrink() {
         printComment(selected_drink);
     }
 }
+
+// 함수 호출
+buyDrink();
