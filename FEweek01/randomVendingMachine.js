@@ -40,3 +40,12 @@ function printComment(selected_drink) {
         console.log(`돈이 부족해요! 음료를 살 수 없어요!`);
     } 
 }
+
+// 랜덤 자판기 함수
+function buyDrink() {
+    // 반복 조건
+    for (let i = 0; i < 3; i++) {
+        const selected_drink = getRandomDrink(drinks);
+        printComment(selected_drink);
+    }
+}
