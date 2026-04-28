@@ -5,7 +5,7 @@ const wishList = document.getElementById("wish-list");
 
 // 위시리스트 추가 함수
 function addWish(event) {
-    event.preventDefault(); // 폼 제풀 방지
+    event.preventDefault(); // 폼 제출 방지
 
     const wishText = wishInput.value.trim();
 
@@ -22,10 +22,25 @@ function addWish(event) {
         deleteBtn.textContent = "삭제";
         // 요소 추가
         wishItem.appendChild(wishTextSpan);
-        wishItem.appendChildw(deleteBtn);
+        wishItem.appendChild(deleteBtn);
         wishList.appendChild(wishItem);
 
         // 입력창 초기화
         wishInput.value = "";
     }
 }
+
+// 구매 완료 / 삭제 처리 함수
+function handleWishClick(event) {
+    const target = event.target;
+
+    // 삭제 버튼 클릭
+    if (target.classList.contains("delete-btn")) {
+        target.parentElement.remove(); // 해당 버튼이 있는 <li> 삭제
+    }
+}
+
+// 이벤트 등록
+wishForm.addEventListener("submit", addWish);
+wishList.addEventListener("click", handleWishClick);
+
