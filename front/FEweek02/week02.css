@@ -1,0 +1,70 @@
+body {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: sans-serif;
+}
+
+h1 {
+    color: #f0873e;
+    text-align: center;
+}
+
+#wish-form {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+#wish-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px 0 0 10px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    outline: none;
+}
+
+#add-btn {
+    padding: 10px 15px;
+    background-color: #f0873e;
+    color: white;
+    border: none;
+    border-radius: 0 10px 10px 0;
+    font-weight: 600;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+#wish-list {
+    list-style: none;
+    padding: 0;
+}
+
+.wish-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+.wish-item.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.delete-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-weight: 600;
+    font-size: 0.7rem;
+    cursor: pointer;
+}
