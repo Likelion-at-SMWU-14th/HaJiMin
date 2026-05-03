@@ -1,10 +1,10 @@
 // DOM 요소 선택
-const likeBtn = document.querySelector("like-btn");
-const likeText = document.querySelector("like-text");
-const bookmarkBtn = document.querySelector("bookmark-btn");
-const moreBtn = document.querySelector("more-btn");
-const lessBtn = document.querySelector("less-btn");
-const fullText = document.querySelector("full-text");
+const likeBtn = document.querySelector(".like-btn");
+const likeText = document.querySelector(".like-text");
+const bookmarkBtn = document.querySelector(".bookmark-btn");
+const moreBtn = document.querySelector(".more-btn");
+const lessBtn = document.querySelector(".less-btn");
+const fullText = document.querySelector(".full-text");
 
 // 좋아요 버튼 클릭
 likeBtn.addEventListener("click", function() {
@@ -42,18 +42,18 @@ function handleTextClick(event) {
     // 더보기 버튼
     if (target.classList.contains("more-btn")) {
         if (target.classList.contains("clicked")) {
-            target.display = none;
-            fullText.display = inline;
-            lessBtn.display = inline;
+            target.style.display = "none";
+            fullText.style.display = "inline";
+            lessBtn.style.display = "inline";
         } 
     }
 
     // 접기 버튼
     if (target.classList.contains("less-btn")) {
         if (target.classList.contains("clicked")) {
-            target.display = none;
-            fullText.display = none;
-            moreBtn.display = inline;
+            target.style.display = "none";
+            fullText.style.display = "none";
+            moreBtn.style.display = "inline";
         } 
     }
 }
