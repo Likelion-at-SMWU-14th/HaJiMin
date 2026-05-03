@@ -21,6 +21,18 @@ likeBtn.addEventListener("click", function() {
     }
 });
 
+// 북마크 버튼 클릭
+bookmarkBtn.addEventListener("click", function() {
+    bookmarkBtn.classList.toggle("clicked");
+
+    if (bookmarkBtn.classList.contains("clicked")) {
+        bookmarkBtn.src = "./images/bookmark_fill.svg"
+    } else {
+        bookmarkBtn.src = "./images/bookmark_empty.svg"
+    }
+});
+
+
 
 
 
