@@ -1,0 +1,110 @@
+body {
+    min-height: 100vh;
+    margin: 0;
+}
+
+.instagram-box {
+    width: 25.3rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0.4375rem;
+    background: #FFFFFF;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+}
+
+header {
+    display: flex;
+    align-items: center;
+    margin-top: 1.012rem;
+    margin-left: 1.012rem;
+}
+
+.profile {
+    width: 2.875rem;
+    aspect-ratio: 1/1;
+    margin-right: 0.713rem;
+}
+
+.nickname {
+    color: #000;
+    font-family: Inter;
+    font-size: 0.95rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.food {
+    margin-top: 1.012rem;
+    width: 25.3rem;
+    aspect-ratio: 176/201;
+}
+
+.emoji-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0.575rem;
+    margin-top: 0.75rem;
+    margin-bottom: 1.14rem;
+}
+
+.left-emoji-group {
+    display: flex;
+    align-items: center;
+}
+
+.emoji {
+    width: 1.5rem;
+    aspect-ratio: 1/1;
+    margin-right: 0.4rem;
+}
+
+.bookmark-btn {
+    margin-right: 0;
+}
+
+.emoji-text {
+    color: #000;
+    font-family: Inter;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-right: 0.437rem;
+}
+
+.text-group {
+    padding: 0 0.8rem;
+    margin-bottom: 1.012rem;
+}
+
+.text {
+    color: #000;
+    font-family: Inter;
+    font-size: 0.85rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.btn-text {
+    color: #979090;
+    font-family: Inter;
+    font-size: 0.85rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.full-text {
+    display: none;
+}
+
+.less-btn {
+    display: none;
+}
+
+
