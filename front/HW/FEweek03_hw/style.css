@@ -1,0 +1,25 @@
+body {
+    background: #d8d1d1;
+    padding: 20px;
+}
+
+.input-area {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+
+#input-text {
+    padding: 5px;
+    margin-right: 5px;
+    outline: none;
+}
+
+.btn-search {
+    padding: 5px;
+    color: #d8d1d1;
+    border: none;
+    border-radius: 2px;
+    background-color: rgb(199, 109, 109);
+}
