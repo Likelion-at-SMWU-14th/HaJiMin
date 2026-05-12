@@ -18,3 +18,5 @@ function showToast(message) {
 }
 
 showToast("환영합니다!");
+// setTimeout()은 1회 호출되기 때문에 clearTimeout()을 필수적으로 사용할 필요x
+

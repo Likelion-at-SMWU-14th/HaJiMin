@@ -1,0 +1,17 @@
+// JSON 객체 배열
+const movies = [
+    { title: "만약에 우리", rating: 8.83, genre: "로맨스", isAdult: false },
+    { title: "왕과 사는 남자", rating: 8.87, genre: "드라마", isAdult: false },
+    { title: "야당", rating: 8.55, genre: "범죄", isAdult: true },
+    { title: "악마는 프라다를 입는다2", rating: 9.14, genre: "드라마", isAdult: false },
+    { title: "서브스턴스", rating: 8.51, genre: "스릴러", isAdult: true },
+    { title: "프로젝트 헤일메리", rating: 9.21, genre: "SF", isAdult: false },
+    { title: "짱구", rating: 8.08, genre: "드라마", isAdult: false },
+    { title: "살목지", rating: 8.35, genre: "공포", isAdult: false },
+];
+
+const filteredList = movies.filter((movie) => {
+    return movie.genre.includes('드');
+});
+
+console.log("드가 들어가는 장르의 영화 목록: ", filteredList);
