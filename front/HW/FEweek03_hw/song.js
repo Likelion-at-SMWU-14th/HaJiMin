@@ -22,12 +22,14 @@ async function fetchKaraoke(keyword) {
                 <h2 class="song-title">${song.title}</h2>
                 <p class="singer">${song.singer}</p>
                 <div class="song-detail-area">
-                    <p class="song-detail">번호 ${song.no}</p>
-                    <p class="song-detail">작사 ${song.lyricist}</p>
-                </div>
-                <div class="song-detail-area">
-                    <p class="song-detail">작곡 ${song.composer}</p>
-                    <p class="song-detail">발매일 ${song.release}</p>
+                    <div class="song-detail-box">
+                        <p class="song-detail">번호 ${song.no}</p>
+                        <p class="song-detail">작사 ${song.lyricist}</p>
+                    </div>
+                    <div class="song-detail-box">
+                        <p class="song-detail">작곡 ${song.composer}</p>
+                        <p class="song-detail">발매일 ${song.release}</p>
+                    </div>
                 </div>
             `;
 

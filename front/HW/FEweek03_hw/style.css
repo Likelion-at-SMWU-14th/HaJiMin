@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background: #d8d1d1;
     padding: 20px;
@@ -24,3 +29,29 @@ body {
     background-color: rgb(199, 109, 109);
 }
 
+.card {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.singer {
+    color: #a9a2a2;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.song-detail-area {
+    display: flex;
+    flex-direction: row;
+}
+
+.song-detail-box {
+    flex: 1;
+}
+
+.song-detail {
+    font-size: 14px;
+    margin-top: 10px;
+}
