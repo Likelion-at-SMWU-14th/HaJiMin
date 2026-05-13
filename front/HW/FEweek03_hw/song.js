@@ -5,7 +5,7 @@ const input = document.getElementById("input-text");
 // 노래방 리스트 가져오기
 async function fetchKaraoke(keyword) {
     try {
-        const response = await fetch("https://api.manana.kr/karaoke/singer/${keyword}.json");
+        const response = await fetch(`https://api.manana.kr/karaoke/singer/${keyword}.json`);
         const songList = await response.json();
 
         const container = document.getElementById("songContainer");
@@ -40,16 +40,17 @@ async function fetchKaraoke(keyword) {
 
 // 검색 함수
 function searchSong() {
-    if (input.value.trim() !== "") { // 검색어 입력이 있을 경우
-        btnSearch.addEventListener('click', () => {
+    btnSearch.addEventListener('click', () => {
+        if (input.value.trim() !== "") {
             fetchKaraoke(input.value);
-        });
-        input.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") {
-                fetchKaraoke(input.value);
-            }
-        });
-    }
+        }
+    });
+
+    input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" && input.value.trim() !== "") {
+            fetchKaraoke(input.value);
+        }
+    });
 }
 
 searchSong();
