@@ -1,3 +1,7 @@
+// DOM 요소 선택
+const btnSearch = document.querySelector(".btn-search");
+const input = document.getElementById("input-text");
+
 // 노래방 리스트 가져오기
 async function fetchKaraoke(keyword) {
     try {
@@ -6,6 +10,9 @@ async function fetchKaraoke(keyword) {
 
         const container = document.getElementById("songContainer");
         
+        // 컨테이너 비우기
+        container.innerHTML = ""; 
+
         songList.forEach((song) => {
             const card = document.createElement("div");
             card.className = "card";
@@ -30,3 +37,19 @@ async function fetchKaraoke(keyword) {
         console.log("에러 발생: ", error);
     }
 }
+
+// 검색 함수
+function searchSong() {
+    if (input.value.trim() !== "") { // 검색어 입력이 있을 경우
+        btnSearch.addEventListener('click', () => {
+            fetchKaraoke(input.value);
+        });
+        input.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                fetchKaraoke(input.value);
+            }
+        });
+    }
+}
+
+searchSong();
