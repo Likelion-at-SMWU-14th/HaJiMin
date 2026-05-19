@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #d8d1d1;
+    padding: 20px;
+}
+
+.input-area {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+
+#input-text {
+    padding: 5px;
+    margin-right: 5px;
+    outline: none;
+}
+
+.btn-search {
+    padding: 5px;
+    color: #d8d1d1;
+    border: none;
+    border-radius: 2px;
+    background-color: rgb(199, 109, 109);
+}
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.singer {
+    color: #a9a2a2;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.song-detail-area {
+    display: flex;
+    flex-direction: row;
+}
+
+.song-detail-box {
+    flex: 1;
+}
+
+.song-detail {
+    font-size: 14px;
+    margin-top: 10px;
+}
