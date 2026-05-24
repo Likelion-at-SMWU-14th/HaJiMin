@@ -1,6 +1,18 @@
 import styled from 'styled-components'
 
 const CardContainer = styled.div`
+  display: none;
+
+  &:target {
+    display: block;
+  }
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+
   width: 26.8125rem;
   height: 39.75rem;
   background: #eeecec;
@@ -35,9 +47,11 @@ const DateText = styled.p`
 const CityCard = ({ id, img, cityName, date }) => {
   return (
     <CardContainer id={id}>
-      <CityImg src={img} />
-      <CityText>{cityName}</CityText>
-      <DateText>{date}</DateText>
+      <a href='#'>
+        <CityImg src={img} />
+        <CityText>{cityName}</CityText>
+        <DateText>{date}</DateText>
+      </a>
     </CardContainer>
   )
 }
