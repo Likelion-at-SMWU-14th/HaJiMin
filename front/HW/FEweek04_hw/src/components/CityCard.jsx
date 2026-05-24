@@ -4,7 +4,9 @@ const CardContainer = styled.div`
   display: none;
 
   &:target {
-    display: block;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
   }
 
   position: fixed;
@@ -18,13 +20,20 @@ const CardContainer = styled.div`
   background: #eeecec;
 `
 
+const CloseLink = styled.a`
+  text-decoration: none;
+  color: inherit;
+`
+
 const CityImg = styled.img`
   width: 24.1875rem;
   height: 28.25rem;
   aspect-ratio: 125/146;
+  margin-top: 2.75rem;
 `
 
 const CityText = styled.p`
+  margin: 0;
   color: #7e6969;
   font-family: VT323;
   font-size: 2rem;
@@ -32,9 +41,11 @@ const CityText = styled.p`
   font-weight: 400;
   line-height: normal;
   text-align: center;
+  margin-top: 2.13rem;
 `
 
 const DateText = styled.p`
+  margin: 0;
   color: #b85959;
   font-family: VT323;
   font-size: 1.5rem;
@@ -42,16 +53,17 @@ const DateText = styled.p`
   font-weight: 400;
   line-height: normal;
   text-align: center;
+  margin-top: 0.81rem;
 `
 
 const CityCard = ({ id, img, cityName, date }) => {
   return (
     <CardContainer id={id}>
-      <a href='#'>
+      <CloseLink href='#'>
         <CityImg src={img} />
         <CityText>{cityName}</CityText>
         <DateText>{date}</DateText>
-      </a>
+      </CloseLink>
     </CardContainer>
   )
 }
