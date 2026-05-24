@@ -1,5 +1,6 @@
-import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps'
+import { ComposableMap, Geographies, Geography } from 'react-simple-maps'
 import styled from 'styled-components'
+import MapPin from '../components/MapPin'
 
 const geoUrl = 'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json'
 
@@ -32,13 +33,17 @@ const EuropeMap = () => {
                 key={geo.rsmKey}
                 geography={geo}
                 style={{
-                  default: { fill: '#D6D6DA', stroke: '#fff' }, // 기본 색
-                  hover: { fill: '#b0b0b0' }, // 호버 색
+                  default: { fill: '#D6D6DA', stroke: '#fff', outline: 'none' },
+                  hover: { fill: '#D6D6DA', stroke: '#fff', outline: 'none' }, // 호버 색 고정
+                  pressed: { fill: '#D6D6DA', stroke: '#fff', outline: 'none' }, // 클릭 효과 제거
                 }}
               />
             ))
           }
         </Geographies>
+
+        {/* 핀 표시 */}
+        <MapPin id='koln' coordinates={[6.9602786, 50.937531]} />
       </StyledMap>
     </MapContainer>
   )
