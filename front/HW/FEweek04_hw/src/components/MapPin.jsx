@@ -1,4 +1,4 @@
-import Marker from 'react-simple-maps'
+import { Marker } from 'react-simple-maps'
 import location from '../assets/location.svg'
 
 const MapPin = ({ id, coordinates }) => {
