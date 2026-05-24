@@ -1,7 +1,12 @@
 import "./App.css";
+import EuropeMap from "./components/EuropeMap";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <EuropeMap />
+    </>
+  );
 }
 
 export default App;
