@@ -32,9 +32,9 @@ const DateText = styled.p`
   text-align: center;
 `
 
-const CityCard = ({ img, cityName, date }) => {
+const CityCard = ({ id, img, cityName, date }) => {
   return (
-    <CardContainer>
+    <CardContainer id={id}>
       <CityImg src={img} />
       <CityText>{cityName}</CityText>
       <DateText>{date}</DateText>
