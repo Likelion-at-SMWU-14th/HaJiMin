@@ -44,6 +44,13 @@ const EuropeMap = () => {
 
         {/* 핀 표시 */}
         <MapPin id='koln' coordinates={[6.9602786, 50.937531]} />
+        <MapPin id='barcelona' coordinates={[2.1686496, 41.3874374]} />
+        <MapPin id='paris' coordinates={[2.3513765, 48.8575475]} />
+        <MapPin id='nice' coordinates={[7.261953200000001, 43.7101728]} />
+        <MapPin id='edinburgh' coordinates={[-3.188267, 55.953252]} />
+        <MapPin id='dubrovnik' coordinates={[18.0944238, 42.65066059999999]} />
+        <MapPin id='bled' coordinates={[14.1145798, 46.3683266]} />
+        <MapPin id='budapest' coordinates={[19.040235, 47.497912]} />
       </StyledMap>
     </MapContainer>
   )
