@@ -12,7 +12,7 @@ function App() {
             <S.CalcButton
               key={button.label}
               type="button"
-              $varient={button.variant}
+              $variant={button.variant}
               $span={button.span}
             >
               {button.label}
