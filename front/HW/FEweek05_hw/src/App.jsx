@@ -1,40 +1,38 @@
 import "./App.css";
+import * as S from "./styles/Oliveyoung.Styled";
 
 function App() {
   return (
-    <div>
-      <div>
+    <S.Page>
+      <S.Display>
         {/* 상단 카테고리 */}
-        <div>
-          <div>1</div>
-          <div>2</div>
-          <div>3</div>
-          <div>4</div>
-          <div>5</div>
-          <div>6</div>
-          <div>7</div>
-          <div>8</div>
-        </div>
+        <S.CategoryPanel>
+          <S.CategoryButton>1</S.CategoryButton>
+          <S.CategoryButton>2</S.CategoryButton>
+          <S.CategoryButton>3</S.CategoryButton>
+          <S.CategoryButton>4</S.CategoryButton>
+          <S.CategoryButton>5</S.CategoryButton>
+          <S.CategoryButton>6</S.CategoryButton>
+          <S.CategoryButton>7</S.CategoryButton>
+          <S.CategoryButton>8</S.CategoryButton>
+        </S.CategoryPanel>
 
         {/* 메인 제품 리스트 */}
-        <div>
-          <div>
-            <div>상품 이미지</div>
-            <div>상품 브랜드</div>
-            <div>상품 이름</div>
-            <div>가격</div>
-            <div>카테고리</div>
-          </div>
-          <div>
-            <div>상품 이미지</div>
-            <div>상품 브랜드</div>
-            <div>상품 이름</div>
-            <div>가격</div>
-            <div>카테고리</div>
-          </div>
-        </div>
-      </div>
-    </div>
+        <S.ProductGrid>
+          <S.ProductCard>
+            <S.ProductCardImage>상품 이미지</S.ProductCardImage>
+            <S.ProductCardBrand>상품 브랜드</S.ProductCardBrand>
+            <S.ProductCardName>상품 이름</S.ProductCardName>
+            <S.ProductCardPrice>가격</S.ProductCardPrice>
+            <S.ProductCardTagList>
+              <S.ProductCardTag>세일</S.ProductCardTag>
+              <S.ProductCardTag>쿠폰</S.ProductCardTag>
+              <S.ProductCardTag>오늘드림</S.ProductCardTag>
+            </S.ProductCardTagList>
+          </S.ProductCard>
+        </S.ProductGrid>
+      </S.Display>
+    </S.Page>
   );
 }
 
