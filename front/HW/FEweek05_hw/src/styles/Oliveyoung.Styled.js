@@ -86,12 +86,13 @@ export const ProductCardPrice = styled.div`
 
 export const ProductCardTagList = styled.div`
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 `;
 
 export const ProductCardTag = styled.div`
-  font-size: 0.8;
+  font-size: 0.8rem;
   font-weight: 400;
   color: #ffffff;
   background-color: #831e92;
