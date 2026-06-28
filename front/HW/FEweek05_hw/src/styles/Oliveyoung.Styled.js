@@ -6,18 +6,14 @@ export const Page = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  background-color: #838383;
 `;
 
 export const Display = styled.div`
-  width: 80vw;
+  width: 70vw;
 
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-
-  background-color: #9c4b4b;
 `;
 
 export const CategoryPanel = styled.div`
@@ -26,21 +22,27 @@ export const CategoryPanel = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
 
-  padding-bottom: 5rem;
-
-  background-color: #33db74;
+  padding: 1rem 0rem 4rem;
 `;
 
 export const CategoryButton = styled.div`
-  min-height: 4rem;
+  max-height: 4rem;
+  box-sizing: border-box;
 
   display: flex;
   justify-content: flex-start;
   align-items: center;
 
-  padding: 1.5rem;
+  padding: 0.5rem;
+  border: 0.5px solid #a1a1a1;
+  font-size: 1rem;
 
-  border: 1px solid #a1a1a1;
+  background-color: ${({ $variant }) => {
+    if ($variant === "selected") {
+      return "#d45757";
+    }
+    return "#ffffff";
+  }};
 `;
 
 export const ProductGrid = styled.div`
@@ -48,9 +50,9 @@ export const ProductGrid = styled.div`
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 5rem;
+  gap: 2.5rem;
 
-  background-color: #3368db;
+  padding-bottom: 2rem;
 `;
 
 export const ProductCard = styled.div`
@@ -79,7 +81,7 @@ export const ProductCardName = styled.div`
 `;
 
 export const ProductCardPrice = styled.div`
-  font-size: 1.7rem;
+  font-size: 1.2rem;
   font-weight: 500;
   color: #3c3a3a;
 `;
@@ -95,8 +97,20 @@ export const ProductCardTag = styled.div`
   font-size: 0.8rem;
   font-weight: 400;
   color: #ffffff;
-  background-color: #831e92;
 
   border-radius: 1rem;
   padding: 0.2rem 0.5rem;
+
+  background-color: ${({ $variant }) => {
+    if ($variant === "세일") {
+      return "#cd2d2d";
+    }
+    if ($variant === "쿠폰") {
+      return "#61cd50";
+    }
+    if ($variant === "증정") {
+      return "#35b9d7";
+    }
+    return "#cf51b2";
+  }};
 `;
