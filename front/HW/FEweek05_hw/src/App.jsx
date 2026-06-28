@@ -20,7 +20,62 @@ function App() {
         {/* 메인 제품 리스트 */}
         <S.ProductGrid>
           <S.ProductCard>
-            <S.ProductCardImage>상품 이미지</S.ProductCardImage>
+            <S.ProductCardImage />
+            <S.ProductCardBrand>상품 브랜드</S.ProductCardBrand>
+            <S.ProductCardName>상품 이름</S.ProductCardName>
+            <S.ProductCardPrice>가격</S.ProductCardPrice>
+            <S.ProductCardTagList>
+              <S.ProductCardTag>세일</S.ProductCardTag>
+              <S.ProductCardTag>쿠폰</S.ProductCardTag>
+              <S.ProductCardTag>오늘드림</S.ProductCardTag>
+            </S.ProductCardTagList>
+          </S.ProductCard>
+          <S.ProductCard>
+            <S.ProductCardImage />
+            <S.ProductCardBrand>상품 브랜드</S.ProductCardBrand>
+            <S.ProductCardName>상품 이름</S.ProductCardName>
+            <S.ProductCardPrice>가격</S.ProductCardPrice>
+            <S.ProductCardTagList>
+              <S.ProductCardTag>세일</S.ProductCardTag>
+              <S.ProductCardTag>쿠폰</S.ProductCardTag>
+              <S.ProductCardTag>오늘드림</S.ProductCardTag>
+            </S.ProductCardTagList>
+          </S.ProductCard>
+          <S.ProductCard>
+            <S.ProductCardImage />
+            <S.ProductCardBrand>상품 브랜드</S.ProductCardBrand>
+            <S.ProductCardName>상품 이름</S.ProductCardName>
+            <S.ProductCardPrice>가격</S.ProductCardPrice>
+            <S.ProductCardTagList>
+              <S.ProductCardTag>세일</S.ProductCardTag>
+              <S.ProductCardTag>쿠폰</S.ProductCardTag>
+              <S.ProductCardTag>오늘드림</S.ProductCardTag>
+            </S.ProductCardTagList>
+          </S.ProductCard>
+          <S.ProductCard>
+            <S.ProductCardImage />
+            <S.ProductCardBrand>상품 브랜드</S.ProductCardBrand>
+            <S.ProductCardName>상품 이름</S.ProductCardName>
+            <S.ProductCardPrice>가격</S.ProductCardPrice>
+            <S.ProductCardTagList>
+              <S.ProductCardTag>세일</S.ProductCardTag>
+              <S.ProductCardTag>쿠폰</S.ProductCardTag>
+              <S.ProductCardTag>오늘드림</S.ProductCardTag>
+            </S.ProductCardTagList>
+          </S.ProductCard>
+          <S.ProductCard>
+            <S.ProductCardImage />
+            <S.ProductCardBrand>상품 브랜드</S.ProductCardBrand>
+            <S.ProductCardName>상품 이름</S.ProductCardName>
+            <S.ProductCardPrice>가격</S.ProductCardPrice>
+            <S.ProductCardTagList>
+              <S.ProductCardTag>세일</S.ProductCardTag>
+              <S.ProductCardTag>쿠폰</S.ProductCardTag>
+              <S.ProductCardTag>오늘드림</S.ProductCardTag>
+            </S.ProductCardTagList>
+          </S.ProductCard>
+          <S.ProductCard>
+            <S.ProductCardImage />
             <S.ProductCardBrand>상품 브랜드</S.ProductCardBrand>
             <S.ProductCardName>상품 이름</S.ProductCardName>
             <S.ProductCardPrice>가격</S.ProductCardPrice>
