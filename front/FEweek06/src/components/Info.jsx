@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Info() {
   // 컴포넌트 최상단에 state 선언
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
+
+  useEffect(() => {
+    console.log("nickname이 변경될 때마다 렌더링!🎸");
+    console.log({ nickname });
+  }, [nickname]);
 
   return (
     <>
