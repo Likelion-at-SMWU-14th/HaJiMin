@@ -3,7 +3,7 @@ import * as S from "../styles/Oliveyoung.Styled";
 function RankingProductCard({ image, brand, name, price, tags }) {
   return (
     <S.ProductCard>
-      <S.ProductCardImage src={image} />
+      <S.ProductCardImage src={image} alt={`${brand} ${name}`} />
       <S.ProductCardBrand>{brand}</S.ProductCardBrand>
       <S.ProductCardName>{name}</S.ProductCardName>
       <S.ProductCardPrice>{price}</S.ProductCardPrice>

@@ -16,7 +16,7 @@ export const Display = styled.div`
   gap: 0.5rem;
 `;
 
-export const CategoryPannel = styled.div`
+export const CategoryPanel = styled.div`
   width: 100%;
 
   display: grid;

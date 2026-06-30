@@ -1,20 +1,20 @@
 import * as S from "../styles/Oliveyoung.Styled";
-import { categorys } from "../data/categoryData";
+import { categories } from "../data/categoryData";
 import RankingCategoryButton from "./RankingCategoryButton";
 
 function RankingCategoryList() {
   return (
-    <S.CategoryPannel>
-      {categorys.map((category) => (
+    <S.CategoryPanel>
+      {categories.map((category) => (
         <RankingCategoryButton
-          key={category.label}
+          key={category.id}
           label={category.label}
           variant={category.variant}
         >
           {category.label}
         </RankingCategoryButton>
       ))}
-    </S.CategoryPannel>
+    </S.CategoryPanel>
   );
 }
 
