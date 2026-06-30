@@ -5,6 +5,18 @@ function Info() {
   const [name, setName] = useState("");
   const [nickname, setNickname] = useState("");
 
+  //   // 모든 렌더링마다 호출
+  //   useEffect(() => {
+  //     console.log("렌더링이 되었어요!!🌀");
+  //     console.log({ name, nickname });
+  //   });
+
+  //   // 최초 렌더링 시에만 호출
+  //   useEffect(() => {
+  //     console.log("최초 렌더링시 출력 되어요!🌀");
+  //   }, []);
+
+  // nickname state 변경 시 호출
   useEffect(() => {
     console.log("nickname이 변경될 때마다 렌더링!🎸");
     console.log({ nickname });
