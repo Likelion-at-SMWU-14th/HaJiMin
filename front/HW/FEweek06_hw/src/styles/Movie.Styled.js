@@ -125,3 +125,11 @@ export const SearchBar = styled.input`
     border: 1px solid rgba(194, 94, 6, 0.5);
   }
 `;
+
+export const EmptyMessage = styled.div`
+  width: 100%;
+  padding: 4rem 0;
+  text-align: center;
+  color: #7b7474;
+  font-size: 0.875rem;
+`;
