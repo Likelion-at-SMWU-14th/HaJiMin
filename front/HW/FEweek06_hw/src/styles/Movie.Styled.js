@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   min-height: 100vh;
@@ -93,12 +93,19 @@ export const FilterButton = styled.button`
   font-weight: 600;
   line-height: normal;
 
-  &:hover,
-  &:focus {
+  &:hover {
     color: #ffffff;
     background-color: #c25e06;
     opacity: 0.4;
   }
+
+  ${({ $isSelected }) =>
+    $isSelected &&
+    css`
+      color: #ffffff;
+      background-color: #c25e06;
+      opacity: 0.4;
+    `}
 `;
 
 export const SearchBar = styled.input`

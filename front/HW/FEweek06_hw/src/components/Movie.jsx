@@ -52,6 +52,7 @@ const Movie = () => {
         {genres.map((genre) => (
           <S.FilterButton
             key={genre.id}
+            $isSelected={selectedGenre === genre.name}
             onClick={() => setSelectedGenre(genre.name)}
           >
             {genre.name}
