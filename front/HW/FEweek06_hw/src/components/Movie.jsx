@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import * as S from "../styles/Movie.Styled";
+import { genres } from "../data/genreData";
 
 const Movie = () => {
   const [movies, setMovies] = useState([]);
@@ -18,12 +19,19 @@ const Movie = () => {
 
   return (
     <S.Container>
-      {/* 필터링 버튼 리스트 */}
-      <S.FilterList></S.FilterList>
-
-      {/* 메인 무비차트 */}
       <S.Title>무비차트</S.Title>
 
+      {/* 필터링 버튼 리스트 */}
+      <S.FilterList>
+        {genres.map((genre) => (
+          <S.FilterButton key={genre.id}>{genre.name}</S.FilterButton>
+        ))}
+      </S.FilterList>
+
+      {/* 검색창 */}
+      <S.SearchBar placeholder="검색어를 입력하세요" />
+
+      {/* 메인 무비차트 */}
       <S.MovieGrid>
         {movies.map((movie) => (
           <S.MovieCard key={movie.id}>

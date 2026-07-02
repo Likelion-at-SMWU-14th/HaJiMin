@@ -73,6 +73,8 @@ export const FilterList = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap: 1rem;
+
+  margin-bottom: 1.5rem;
 `;
 
 export const FilterButton = styled.button`
@@ -85,16 +87,23 @@ export const FilterButton = styled.button`
   background: #fff;
   box-shadow: 1px 1px 4px 0 rgba(194, 94, 6, 0.5);
 
-  color: #7b7474;
+  color: #383434;
   font-size: 0.625rem;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+
+  &:hover,
+  &:focus {
+    color: #ffffff;
+    background-color: #c25e06;
+    opacity: 0.4;
+  }
 `;
 
 export const SearchBar = styled.input`
-  width: 10rem;
-  height: 1.5rem;
+  width: 15rem;
+  height: 2rem;
 
   border-radius: 0.3125rem;
   border: 1px solid rgba(194, 94, 6, 0.5);
@@ -102,9 +111,17 @@ export const SearchBar = styled.input`
   background: #fff;
   box-shadow: 1px 1px 4px 0 rgba(194, 94, 6, 0.5);
 
-  color: #7b7474;
+  color: #383434;
   font-size: 0.5rem;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
+
+  padding-left: 0.5rem;
+  margin-bottom: 2rem;
+
+  &:focus {
+    outline: none;
+    border: 1px solid rgba(194, 94, 6, 0.5);
+  }
 `;
