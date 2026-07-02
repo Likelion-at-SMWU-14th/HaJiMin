@@ -5,6 +5,13 @@ import { genres } from "../data/genreData";
 
 const Movie = () => {
   const [movies, setMovies] = useState([]);
+  const [selectedGenre, setSelectedGenre] = useState("전체");
+
+  // 선택된 장르 필터링
+  const displayedMovies =
+    selectedGenre === "전체"
+      ? movies
+      : movies.filter((movie) => movie.genre === selectedGenre);
 
   useEffect(() => {
     axios
@@ -24,7 +31,12 @@ const Movie = () => {
       {/* 필터링 버튼 리스트 */}
       <S.FilterList>
         {genres.map((genre) => (
-          <S.FilterButton key={genre.id}>{genre.name}</S.FilterButton>
+          <S.FilterButton
+            key={genre.id}
+            onClick={() => setSelectedGenre(genre.name)}
+          >
+            {genre.name}
+          </S.FilterButton>
         ))}
       </S.FilterList>
 
@@ -33,7 +45,7 @@ const Movie = () => {
 
       {/* 메인 무비차트 */}
       <S.MovieGrid>
-        {movies.map((movie) => (
+        {displayedMovies.map((movie) => (
           <S.MovieCard key={movie.id}>
             <S.Poster src={movie.poster} alt={movie.title} />
 
