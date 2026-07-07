@@ -1,11 +1,6 @@
-import { useState, useRef } from "react";
+import { useQuiz } from "../hooks/useQuiz";
 
 const QuizPage = () => {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [userAnswer, setUserAnswer] = useState("");
-  const [answers, setAnswers] = useState([]);
-  const inputRef = useRef(null);
-
   const questions = [
     { question: "React에서 상태를 관리하는 Hook은?", answer: "useState" },
     {
@@ -15,25 +10,15 @@ const QuizPage = () => {
     { question: "DOM에 직접 접근할 때 사용하는 Hook은?", answer: "useRef" },
   ];
 
-  const handleSubmit = () => {
-    const newAnswers = [...answers];
-    newAnswers[currentQuestion] = userAnswer;
-    setAnswers(newAnswers);
-
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion((prev) => prev + 1);
-      setUserAnswer("");
-      setTimeout(() => inputRef.current?.focus(), 0);
-    }
-  };
-
-  const handleReset = () => {
-    setCurrentQuestion(0);
-    setUserAnswer("");
-    setAnswers([]);
-    inputRef.current.value = "";
-    inputRef.current.focus();
-  };
+  const {
+    currentQuestion,
+    userAnswer,
+    setUserAnswer,
+    answers,
+    inputRef,
+    handleSubmit,
+    handleReset,
+  } = useQuiz(questions);
 
   return (
     <div className="quiz-container">
