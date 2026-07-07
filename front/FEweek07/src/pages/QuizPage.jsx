@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useQuiz } from "../hooks/useQuiz";
 
 const QuizPage = () => {
@@ -35,9 +36,16 @@ const QuizPage = () => {
           className="answer-input"
         />
         <div className="button-group">
-          <button onClick={handleSubmit} className="submit-btn">
-            {currentQuestion < questions.length - 1 ? "다음 문제" : "완료"}
-          </button>
+          {currentQuestion < questions.length - 1 ? (
+            <button onClick={handleSubmit} className="submit-btn">
+              다음 문제
+            </button>
+          ) : (
+            <Link to="/result" className="link-btn">
+              결과 보기
+            </Link>
+          )}
+
           <button onClick={handleReset} className="reset-btn">
             초기화
           </button>
