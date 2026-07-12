@@ -1,5 +1,4 @@
-import ellipseBlank from "../assets/ellipse_blank.svg";
-import ellipseChecked from "../assets/ellipse_checked.svg";
+import TodoItem from "../components/TodoItem";
 
 function TodoPage() {
   return (
@@ -16,14 +15,10 @@ function TodoPage() {
           <button className="btn btn-sort-incomplete">미완료</button>
         </div>
         <div className="todo-list">
-          <div className="todo-item">
-            <img className="todo-status" src={ellipseBlank} alt="미완료" />
-            <span className="todo-detail">리액트 공부하기</span>
-          </div>
-          <div className="todo-item">
-            <img className="todo-status" src={ellipseChecked} alt="완료" />
-            <span className="todo-detail">리액트 공부하기</span>
-          </div>
+          <TodoItem status={"blank"} detail={"리액트 공부하기"} />
+          <TodoItem status={"checked"} detail={"장보기"} />
+          <TodoItem status={"blank"} detail={"멋사 FE 7주차 과제"} />
+          <TodoItem status={"blank"} detail={"방 청소"} />
         </div>
       </div>
     </>

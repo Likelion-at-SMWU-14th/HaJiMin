@@ -139,6 +139,8 @@ body {
 }
 
 .todo-status {
+  width: 2rem;
+  height: 2rem;
 }
 
 .todo-detail {
