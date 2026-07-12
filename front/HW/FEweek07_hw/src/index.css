@@ -150,6 +150,8 @@ body {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+
+  cursor: pointer;
 }
 
 /* 투두 상세 페이지 */
@@ -158,6 +160,8 @@ body {
   height: 2.4375rem;
   aspect-ratio: 1/1;
   margin-bottom: 4.44rem;
+
+  cursor: pointer;
 }
 
 .todo-memo {

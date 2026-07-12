@@ -1,9 +1,11 @@
 import TodoItem from "../components/TodoItem";
 import { useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 
 function TodoPage({ todos, setTodos, toggleStatus }) {
   const [text, setText] = useState("");
   const [filter, setFilter] = useState("all");
+  const navigate = useNavigate();
 
   const filteredTodos = useMemo(() => {
     if (filter === "complete") {
@@ -70,6 +72,7 @@ function TodoPage({ todos, setTodos, toggleStatus }) {
               status={todo.status}
               detail={todo.detail}
               onToggle={() => toggleStatus(todo.id)}
+              onDetailClick={() => navigate(`/detail/${todo.id}`)}
             />
           ))}
         </div>

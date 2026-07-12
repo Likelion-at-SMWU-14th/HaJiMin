@@ -19,13 +19,5 @@ export function useTodos() {
     );
   }
 
-  function deleteTodo(id) {
-    setTodos(todos.filter((todo) => todo.id !== id));
-  }
-
-  function updateMemo(id, memo) {
-    setTodos(todos.map((todo) => (todo.id === id ? { ...todo, memo } : todo)));
-  }
-
   return { todos, setTodos, toggleStatus };
 }
