@@ -10,7 +10,7 @@ function TodoDetailPage({ todos, setTodos, toggleStatus }) {
   const [newMemo, setNewMemo] = useState(todo?.memo ?? "");
 
   if (!todo) {
-    return null; // "보여줄 게 없으면 그냥 아무것도 그리지 마"
+    return null;
   }
 
   function updateMemo() {
