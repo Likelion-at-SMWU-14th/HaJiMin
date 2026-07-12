@@ -1,5 +1,5 @@
 import TodoItem from "../components/TodoItem";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 function TodoPage() {
   const [text, setText] = useState("");
@@ -9,6 +9,17 @@ function TodoPage() {
     { id: 3, status: "blank", detail: "멋사 FE 7주차 과제" },
     { id: 4, status: "blank", detail: "방 청소" },
   ]);
+  const [filter, setFilter] = useState("all");
+
+  const filteredTodos = useMemo(() => {
+    if (filter === "complete") {
+      return todos.filter((todo) => todo.status === "checked");
+    }
+    if (filter === "incomplete") {
+      return todos.filter((todo) => todo.status === "blank");
+    }
+    return todos;
+  }, [todos, filter]);
 
   function addNewTodo() {
     if (text.trim() === "") return;
@@ -39,12 +50,27 @@ function TodoPage() {
           </button>
         </div>
         <div className="sort-section">
-          <button className="btn btn-sort-all active">전체</button>
-          <button className="btn btn-sort-complete">완료</button>
-          <button className="btn btn-sort-incomplete">미완료</button>
+          <button
+            onClick={() => setFilter("all")}
+            className={filter === "all" ? "btn active" : "btn"}
+          >
+            전체
+          </button>
+          <button
+            onClick={() => setFilter("complete")}
+            className={filter === "complete" ? "btn active" : "btn"}
+          >
+            완료
+          </button>
+          <button
+            onClick={() => setFilter("incomplete")}
+            className={filter === "incomplete" ? "btn active" : "btn"}
+          >
+            미완료
+          </button>
         </div>
         <div className="todo-list">
-          {todos.map((todo) => (
+          {filteredTodos.map((todo) => (
             <TodoItem key={todo.id} status={todo.status} detail={todo.detail} />
           ))}
         </div>
