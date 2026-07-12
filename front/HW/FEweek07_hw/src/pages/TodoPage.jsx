@@ -34,6 +34,16 @@ function TodoPage() {
     setText("");
   }
 
+  function toggleStatus(id) {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id
+          ? { ...todo, status: todo.status === "blank" ? "checked" : "blank" }
+          : todo,
+      ),
+    );
+  }
+
   return (
     <>
       <div className="layout">
@@ -71,7 +81,12 @@ function TodoPage() {
         </div>
         <div className="todo-list">
           {filteredTodos.map((todo) => (
-            <TodoItem key={todo.id} status={todo.status} detail={todo.detail} />
+            <TodoItem
+              key={todo.id}
+              status={todo.status}
+              detail={todo.detail}
+              onToggle={() => toggleStatus(todo.id)}
+            />
           ))}
         </div>
       </div>
