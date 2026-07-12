@@ -1,14 +1,8 @@
 import TodoItem from "../components/TodoItem";
 import { useState, useMemo } from "react";
 
-function TodoPage() {
+function TodoPage({ todos, setTodos, toggleStatus }) {
   const [text, setText] = useState("");
-  const [todos, setTodos] = useState([
-    { id: 1, status: "blank", detail: "리액트 공부하기" },
-    { id: 2, status: "checked", detail: "장보기" },
-    { id: 3, status: "blank", detail: "멋사 FE 7주차 과제" },
-    { id: 4, status: "blank", detail: "방 청소" },
-  ]);
   const [filter, setFilter] = useState("all");
 
   const filteredTodos = useMemo(() => {
@@ -32,16 +26,6 @@ function TodoPage() {
 
     setTodos([...todos, newTodoItem]);
     setText("");
-  }
-
-  function toggleStatus(id) {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id
-          ? { ...todo, status: todo.status === "blank" ? "checked" : "blank" }
-          : todo,
-      ),
-    );
   }
 
   return (
