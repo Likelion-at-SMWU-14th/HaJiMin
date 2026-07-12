@@ -1,0 +1,216 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e3dddd;
+}
+
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.layout {
+  width: 38.6875rem;
+  height: 80vh;
+  padding: 3.62rem 4.31rem;
+
+  border-radius: 3.125rem;
+  background: #fff;
+  box-shadow: 0 5px 5px 2px rgba(147, 123, 22, 0.25);
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.layout::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge (Chromium) */
+}
+
+/* 투두 페이지 */
+
+.title {
+  color: #5b4a4a;
+  font-family: Inter;
+  font-size: 1.875rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+
+  align-self: center;
+}
+
+.add-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.88rem;
+  margin-top: 3.81rem;
+}
+
+.add-input {
+  width: 23.1875rem;
+  height: 3.375rem;
+  border-radius: 0.9375rem;
+  border: 1.5px solid #8d8b85;
+  padding: 1rem;
+
+  font-family: Inter;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.btn-add {
+  width: 6rem;
+  height: 3.375rem;
+  border-radius: 0.9375rem;
+  border: 1.5px solid #876464;
+  background: #876464;
+
+  color: #fff;
+  font-family: Inter;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.sort-section {
+  display: flex;
+  align-items: center;
+  gap: 0.94rem;
+  margin-top: 1.62rem;
+}
+
+.btn {
+  width: 6rem;
+  height: 3.375rem;
+  border-radius: 0.9375rem;
+  border: 1.5px solid #979090;
+  background-color: #ffffff;
+
+  color: #979090;
+  font-family: Inter;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.btn:hover,
+.btn.active {
+  border-radius: 0.9375rem;
+  border: 1.5px solid #979090;
+  background: #979090;
+
+  color: #fff;
+  font-family: Inter;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2.37rem;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 1.44rem;
+}
+
+.todo-status {
+}
+
+.todo-detail {
+  color: #000;
+  font-family: Inter;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* 투두 상세 페이지 */
+.btn-back {
+  width: 2.4375rem;
+  height: 2.4375rem;
+  aspect-ratio: 1/1;
+  margin-bottom: 4.44rem;
+}
+
+.todo-memo {
+  width: 29.375rem;
+  height: 15.9375rem;
+  border-radius: 0.9375rem;
+  background: rgba(217, 217, 217, 0.2);
+  padding: 1.81rem 1.44rem;
+
+  color: #676060;
+  font-family: Inter;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  margin-top: 2.12rem;
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 3rem;
+}
+
+.btn-save {
+  width: 14.0625rem;
+  height: 3.375rem;
+  border-radius: 0.9375rem;
+  border: 1.5px solid #876464;
+  background: #876464;
+
+  color: #fff;
+  font-family: Inter;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.btn-delete {
+  width: 14.0625rem;
+  height: 3.375rem;
+  border-radius: 0.9375rem;
+  border: 1.5px solid #979090;
+
+  color: #979090;
+  font-family: Inter;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
