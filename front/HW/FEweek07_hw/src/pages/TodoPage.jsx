@@ -24,6 +24,7 @@ function TodoPage({ todos, setTodos, toggleStatus }) {
       id: Date.now(),
       status: "blank",
       detail: text,
+      memo: "",
     };
 
     setTodos([...todos, newTodoItem]);
