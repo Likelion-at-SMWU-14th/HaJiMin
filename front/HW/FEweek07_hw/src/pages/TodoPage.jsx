@@ -27,7 +27,7 @@ function TodoPage({ todos, setTodos, toggleStatus }) {
       memo: "",
     };
 
-    setTodos([...todos, newTodoItem]);
+    setTodos((prevTodos) => [...prevTodos, newTodoItem]);
     setText("");
   }
 

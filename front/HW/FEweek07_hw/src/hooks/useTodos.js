@@ -20,8 +20,8 @@ export function useTodos() {
   ]);
 
   function toggleStatus(id) {
-    setTodos(
-      todos.map((todo) =>
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
         todo.id === id
           ? { ...todo, status: todo.status === "blank" ? "checked" : "blank" }
           : todo,

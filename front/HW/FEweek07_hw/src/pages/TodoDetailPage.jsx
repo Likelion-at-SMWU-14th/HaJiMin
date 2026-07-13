@@ -14,14 +14,14 @@ function TodoDetailPage({ todos, setTodos, toggleStatus }) {
   }
 
   function updateMemo() {
-    setTodos(
-      todos.map((t) => (t.id === todo.id ? { ...t, memo: newMemo } : t)),
+    setTodos((prevTodos) =>
+      prevTodos.map((t) => (t.id === todo.id ? { ...t, memo: newMemo } : t)),
     );
     navigate("/");
   }
 
   function deleteTodo() {
-    setTodos(todos.filter((t) => t.id !== todo.id));
+    setTodos((prevTodos) => prevTodos.filter((t) => t.id !== todo.id));
     navigate("/");
   }
 
