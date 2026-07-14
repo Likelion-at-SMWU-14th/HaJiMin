@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import LionIcon from "../components/LionIcon";
+import LionIcon from "./LionIcon";
 import Out from "../assets/Out.svg";
 import { useNavigate } from "react-router-dom";
 
