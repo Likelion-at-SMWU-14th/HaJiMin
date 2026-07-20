@@ -8,13 +8,14 @@ const CommentList = () => {
   const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const baseURL = import.meta.env.VITE_API_BASE_URL;
 
   const getComment = () => {
     setLoading(true);
     setError(false);
 
     axios
-      .get("http://127.0.0.1:8000/entries/")
+      .get(`${baseURL}/entries/`)
       .then((res) => {
         console.log(res);
         setComments(res.data.reverse());

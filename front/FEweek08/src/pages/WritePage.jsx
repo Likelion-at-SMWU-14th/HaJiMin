@@ -10,10 +10,11 @@ const WritePage = () => {
   const navigate = useNavigate();
   const [author, setAuthor] = useState("");
   const [comment, setComment] = useState("");
+  const baseURL = import.meta.env.VITE_API_BASE_URL;
 
   const postComment = () => {
     axios
-      .post("http://127.0.0.1:8000/entries/", {
+      .post(`${baseURL}/entries/`, {
         // request-body 요청 부분
         author: author, // API 명세서 상 변수명
         comment: comment,

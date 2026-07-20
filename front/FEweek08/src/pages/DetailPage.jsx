@@ -9,10 +9,11 @@ import axios from "axios";
 const DetailPage = () => {
   const { id } = useParams();
   const [detail, setDetail] = useState([]);
+  const baseURL = import.meta.env.VITE_API_BASE_URL;
 
   const getDetail = (id) => {
     axios
-      .get(`http://127.0.0.1:8000/entries/${id}`)
+      .get(`${baseURL}/entries/${id}`)
       .then((res) => {
         console.log(res);
         setDetail(res.data);
