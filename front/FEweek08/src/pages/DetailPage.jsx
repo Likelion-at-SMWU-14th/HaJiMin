@@ -1,6 +1,5 @@
 import Button from "../components/Button";
 import styled from "styled-components";
-import { COMMENT_DATA } from "../constant/comment";
 import DetailComment from "../components/DetailComment";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -8,8 +7,13 @@ import axios from "axios";
 
 const DetailPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [detail, setDetail] = useState([]);
   const baseURL = import.meta.env.VITE_API_BASE_URL;
+
+  const goToEditPage = () => {
+    navigate(`/edit/${id}`);
+  };
 
   const getDetail = (id) => {
     axios
@@ -31,7 +35,7 @@ const DetailPage = () => {
     <DetailPageWrapper>
       <DetailComment detail={detail} />
       <ButtonWrapper>
-        <Button text="수정하기" />
+        <Button text="수정하기" onBtnClick={goToEditPage} />
         <Button text="삭제하기" />
       </ButtonWrapper>
     </DetailPageWrapper>
