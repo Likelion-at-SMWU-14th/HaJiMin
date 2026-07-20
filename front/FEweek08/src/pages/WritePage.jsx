@@ -1,4 +1,3 @@
-import React from "react";
 import Button from "../components/Button";
 import CommentForm from "../components/CommentForm";
 import styled from "styled-components";
@@ -10,9 +9,14 @@ const WritePage = () => {
   const navigate = useNavigate();
   const [author, setAuthor] = useState("");
   const [comment, setComment] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const baseURL = import.meta.env.VITE_API_BASE_URL;
 
   const postComment = () => {
+    setLoading(true);
+    setError(false);
+
     axios
       .post(`${baseURL}/entries/`, {
         // request-body 요청 부분
@@ -25,9 +29,27 @@ const WritePage = () => {
       })
       .catch((err) => {
         console.log(err);
+        setError(true);
         alert("게시글 작성에 실패했습니다.");
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
+
+  // 로딩 처리
+  if (loading) {
+    return <Message>게시글을 작성하는 중입니다 . . . 🐢</Message>;
+  }
+
+  // 에러 처리
+  if (error) {
+    return (
+      <Message>
+        게시글을 작성하지 못했습니다. 잠시 후 다시 시도해주세요 ! ! 💥
+      </Message>
+    );
+  }
 
   return (
     <WritePageWrapper>
@@ -56,4 +78,11 @@ const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 1.75rem;
+`;
+
+const Message = styled.div`
+  padding: 2rem 3.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #5e5e5e;
 `;

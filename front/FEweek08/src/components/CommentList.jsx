@@ -70,7 +70,9 @@ const CommentWrapper = styled.div`
   gap: 1.25rem 1.75rem;
 `;
 
-const Message = styled.p`
+const Message = styled.div`
+  padding: 2rem 3.5rem;
+  font-size: 1rem;
   font-weight: 400;
   color: #5e5e5e;
 `;
