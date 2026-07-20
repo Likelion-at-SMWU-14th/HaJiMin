@@ -27,6 +27,19 @@ const DetailPage = () => {
       });
   };
 
+  const deleteComment = (id) => {
+    axios
+      .delete(`${baseURL}/entries/${id}/`)
+      .then((res) => {
+        console.log("게시글 삭제가 완료되었습니다.");
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("게시글 삭제에 실패했습니다.");
+      });
+  };
+
   useEffect(() => {
     getDetail(id);
   }, []);
@@ -36,7 +49,7 @@ const DetailPage = () => {
       <DetailComment detail={detail} />
       <ButtonWrapper>
         <Button text="수정하기" onBtnClick={goToEditPage} />
-        <Button text="삭제하기" />
+        <Button text="삭제하기" onBtnClick={() => deleteComment(id)} />
       </ButtonWrapper>
     </DetailPageWrapper>
   );

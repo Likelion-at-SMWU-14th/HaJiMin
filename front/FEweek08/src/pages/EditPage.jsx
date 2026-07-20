@@ -47,7 +47,7 @@ const EditPage = () => {
   }, []);
 
   return (
-    <WritePageWrapper>
+    <EditPageWrapper>
       <CommentForm
         setAuthor={setAuthor}
         setComment={setComment}
@@ -58,13 +58,13 @@ const EditPage = () => {
         <Button text="수정하기" onBtnClick={() => editComment(id)} />
         <Button text="취소" onBtnClick={() => navigate(-1)} />
       </ButtonWrapper>
-    </WritePageWrapper>
+    </EditPageWrapper>
   );
 };
 
 export default EditPage;
 
-const WritePageWrapper = styled.div`
+const EditPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
