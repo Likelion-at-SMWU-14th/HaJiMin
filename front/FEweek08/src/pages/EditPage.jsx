@@ -32,7 +32,6 @@ const EditPage = () => {
         setError(true);
       })
       .finally(() => {
-        // 요청이 끝나면 finally 실행
         setLoading(false);
       });
   };
@@ -58,7 +57,6 @@ const EditPage = () => {
         alert("게시글 수정에 실패했습니다.");
       })
       .finally(() => {
-        // 요청이 끝나면 finally 실행
         setLoading(false);
       });
   };

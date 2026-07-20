@@ -34,7 +34,6 @@ const DetailPage = () => {
         setError(true);
       })
       .finally(() => {
-        // 요청이 끝나면 finally 실행
         setLoading(false);
       });
   };
@@ -56,7 +55,6 @@ const DetailPage = () => {
         alert("게시글 삭제에 실패했습니다.");
       })
       .finally(() => {
-        // 요청이 끝나면 finally 실행
         setLoading(false);
       });
   };
