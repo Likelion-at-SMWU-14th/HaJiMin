@@ -10,6 +10,12 @@ const getHeaderConfig = (pathname) => {
       description: "작성한 내용은 TMI 게시판에 업로드돼요",
       button: false,
     };
+  } else if (pathname.startsWith("/edit/")) {
+    return {
+      title: "TMI 수정하기",
+      description: "수정한 내용은 TMI 게시판에 반영돼요",
+      button: false,
+    };
   }
   return {
     title: "숙멋 프론트의 TMI 게시판 🦁",

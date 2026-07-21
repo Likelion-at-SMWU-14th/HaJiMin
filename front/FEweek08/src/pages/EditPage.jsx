@@ -1,25 +1,22 @@
 import Button from "../components/Button";
+import CommentForm from "../components/CommentForm";
 import styled from "styled-components";
-import DetailComment from "../components/DetailComment";
-import { useParams, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
-const DetailPage = () => {
+const EditPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [detail, setDetail] = useState([]);
+  const [author, setAuthor] = useState("");
+  const [comment, setComment] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [status, setStatus] = useState("GET"); // API 요청 상태 변수
   const baseURL = import.meta.env.VITE_API_BASE_URL;
 
-  const goToEditPage = () => {
-    navigate(`/edit/${id}`);
-  };
-
-  const getDetail = (id) => {
-    setStatus("GET"); // 특정 게시글 조회 상태 GET
+  const getComment = (id) => {
+    setStatus("GET"); // 기존 게시글 조회 상태 GET
     setLoading(true);
     setError(false);
 
@@ -27,7 +24,8 @@ const DetailPage = () => {
       .get(`${baseURL}/entries/${id}`)
       .then((res) => {
         console.log(res);
-        setDetail(res.data);
+        setAuthor(res.data.author);
+        setComment(res.data.comment);
       })
       .catch((err) => {
         console.log(err);
@@ -38,21 +36,25 @@ const DetailPage = () => {
       });
   };
 
-  const deleteComment = (id) => {
-    setStatus("DELETE"); // 게시글 삭제 상태 DELETE
+  const editComment = (id) => {
+    setStatus("PUT"); // 게시글 수정 상태 PUT
     setLoading(true);
     setError(false);
 
     axios
-      .delete(`${baseURL}/entries/${id}/`)
+      .put(`${baseURL}/entries/${id}/`, {
+        // request-body 요청 부분
+        author: author,
+        comment: comment,
+      })
       .then((res) => {
-        console.log("게시글 삭제가 완료되었습니다.");
+        console.log("게시글 수정이 완료되었습니다.");
         navigate("/");
       })
       .catch((err) => {
         console.log(err);
         setError(true);
-        alert("게시글 삭제에 실패했습니다.");
+        alert("게시글 수정에 실패했습니다.");
       })
       .finally(() => {
         setLoading(false);
@@ -60,7 +62,7 @@ const DetailPage = () => {
   };
 
   useEffect(() => {
-    getDetail(id);
+    getComment(id); // 마운트 시 상세 TMI 조회
   }, []);
 
   const statusMessages = {
@@ -69,9 +71,9 @@ const DetailPage = () => {
       error:
         "특정 게시글을 불러오지 못했습니다. 잠시 후 다시 시도해주세요 ! ! 💥",
     },
-    DELETE: {
-      loading: "게시글을 삭제하는 중입니다 . . . 🐢",
-      error: "게시글을 삭제하지 못했습니다. 잠시 후 다시 시도해주세요 ! ! 💥",
+    PUT: {
+      loading: "게시글을 수정하는 중입니다 . . . 🐢",
+      error: "게시글을 수정하지 못했습니다. 잠시 후 다시 시도해주세요 ! ! 💥",
     },
   };
 
@@ -84,19 +86,24 @@ const DetailPage = () => {
   }
 
   return (
-    <DetailPageWrapper>
-      <DetailComment detail={detail} />
+    <EditPageWrapper>
+      <CommentForm
+        setAuthor={setAuthor}
+        setComment={setComment}
+        author={author}
+        comment={comment}
+      />
       <ButtonWrapper>
-        <Button text="수정하기" onBtnClick={goToEditPage} />
-        <Button text="삭제하기" onBtnClick={() => deleteComment(id)} />
+        <Button text="수정하기" onBtnClick={() => editComment(id)} />
+        <Button text="취소" onBtnClick={() => navigate(-1)} />
       </ButtonWrapper>
-    </DetailPageWrapper>
+    </EditPageWrapper>
   );
 };
 
-export default DetailPage;
+export default EditPage;
 
-const DetailPageWrapper = styled.div`
+const EditPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
