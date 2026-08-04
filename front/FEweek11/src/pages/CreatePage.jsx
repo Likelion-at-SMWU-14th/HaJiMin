@@ -37,8 +37,8 @@ const Wrapper = styled.div`
   min-height: 100vh;
   margin: 0;
   padding: 30px 100px;
-  background-color: #f7f3ec;
-  color: #1f1b17;
+  background-color: ${({ theme }) => theme.bg};
+  color: ${({ theme }) => theme.text};
 `;
 
 const Title = styled.h1`
