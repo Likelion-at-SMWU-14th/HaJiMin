@@ -1,11 +1,11 @@
-import { useState } from "react";
 import styled from "styled-components";
+import useTheme from "../hooks/useTheme";
 
 const ToggleBtn = () => {
-  const [isDark, setIsDark] = useState(false); // 기본값: 라이트
+  const { isDark, toggleTheme } = useTheme();
 
   return (
-    <ToggleButton onClick={() => setIsDark((prev) => !prev)}>
+    <ToggleButton onClick={toggleTheme}>
       {isDark ? "🌙 Dark" : "☀️ Light"}
     </ToggleButton>
   );
