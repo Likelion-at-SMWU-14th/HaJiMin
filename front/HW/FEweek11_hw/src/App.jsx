@@ -1,9 +1,11 @@
 import { useState } from "react";
 import Content from "./components/Content";
 import { styled } from "styled-components";
+import usePart from "./hooks/usePart";
 
 function App() {
-  const [part, setPart] = useState("");
+  const { part, setPart } = usePart();
+
   return (
     <Wrapper>
       <div className="title">
