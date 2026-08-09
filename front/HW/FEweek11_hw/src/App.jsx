@@ -4,7 +4,7 @@ import { styled } from "styled-components";
 import usePart from "./hooks/usePart";
 
 function App() {
-  const { part, setPart } = usePart();
+  const { part } = usePart();
 
   return (
     <Wrapper>
