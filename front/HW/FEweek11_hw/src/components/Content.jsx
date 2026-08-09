@@ -2,13 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import Left from "./Left";
 import Right from "./Right";
+import usePart from "../hooks/usePart";
 
-const Content = ({ part, setPart }) => {
+const Content = () => {
+  const { part, setPart } = usePart();
+
   return (
     <Wrapper>
       <div className="content">
-        <Left setPart={setPart} />
-        <Right part={part} />
+        <Left />
+        <Right />
       </div>
     </Wrapper>
   );

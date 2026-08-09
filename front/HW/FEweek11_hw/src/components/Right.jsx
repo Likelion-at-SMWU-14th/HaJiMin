@@ -1,11 +1,14 @@
 import React from "react";
 import { styled } from "styled-components";
 import MemberList from "./MemberList";
+import usePart from "../hooks/usePart";
 
-const Right = ({ part }) => {
+const Right = () => {
+  const { part } = usePart();
+
   return (
     <Wrapper>
-      <MemberList part={part} />
+      <MemberList />
     </Wrapper>
   );
 };
