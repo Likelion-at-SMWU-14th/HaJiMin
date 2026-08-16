@@ -2,8 +2,9 @@ import styled from "styled-components";
 import CartIcon from "./assets/cart-icon.svg";
 import plus from "./assets/plus.svg";
 import BookItem from "./components/BookItem";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useBookStore } from "./store/store";
+import useBookStore from "./store/store";
 
 function App() {
   const navigate = useNavigate();

@@ -1,12 +1,15 @@
 import axios from "axios";
 
+const API_KEY = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY;
+
 export async function searchBooks(query, langRestrict) {
   try {
     const res = await axios.get("https://www.googleapis.com/books/v1/volumes", {
       params: {
         q: query,
         ...(langRestrict && { langRestrict }),
-        maxResults: 20,
+        maxResults: 10,
+        key: API_KEY,
       },
     });
     return res.data.items ?? [];
