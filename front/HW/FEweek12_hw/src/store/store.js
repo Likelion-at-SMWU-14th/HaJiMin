@@ -115,20 +115,6 @@ const useCartStore = create(
           );
         },
 
-        updateQuantity: (id, quantity) => {
-          const nextQuantity = Math.max(1, Number(quantity) || 1);
-
-          set(
-            (state) => ({
-              cartItems: state.cartItems.map((item) =>
-                item.id === id ? { ...item, quantity: nextQuantity } : item,
-              ),
-            }),
-            undefined,
-            "cart/update",
-          );
-        },
-
         clearCart: () => {
           set({ cartItems: [] }, undefined, "cart/clear");
         },
