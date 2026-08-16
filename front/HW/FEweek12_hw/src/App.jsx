@@ -14,7 +14,8 @@ function App() {
         <ActionBlock>
           <SearchBar />
           <CartButton>
-            <CartIcon src={CartIcon} alt="장바구니 아이콘" />
+            <CartIconImg src={CartIcon} alt="장바구니 아이콘" />
+            <ItemCount></ItemCount>
           </CartButton>
         </ActionBlock>
 
@@ -89,12 +90,32 @@ const CartButton = styled.button`
   border-radius: 0.75rem;
   border: 1.5px solid #ede8e3;
   background: #fff;
+  position: relative;
 `;
 
-const CartIcon = styled.img`
+const CartIconImg = styled.img`
   width: 1.25rem;
   height: 1.25rem;
   flex-shrink: 0;
+`;
+
+const ItemCount = styled.p`
+  display: flex;
+  width: 1.125rem;
+  height: 1.125rem;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: -0.28125rem;
+  top: -0.28125rem;
+  border-radius: 62.4375rem;
+  background: #d4845a;
+
+  color: #fff;
+  text-align: center;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 0.6875rem; /* 100% */
 `;
 
 const BookList = styled.div`
@@ -104,4 +125,5 @@ const BookList = styled.div`
   padding-top: 0.75rem;
   flex-direction: column;
   align-items: flex-start;
+  overflow-y: auto;
 `;
