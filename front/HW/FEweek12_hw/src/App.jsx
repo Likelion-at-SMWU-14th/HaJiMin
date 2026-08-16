@@ -1,8 +1,12 @@
 import styled from "styled-components";
 import CartIcon from "./assets/cart-icon.svg";
+import plus from "./assets/plus.svg";
 import BookItem from "./components/BookItem";
+import { useNavigate } from "react-router-dom";
 
 function App() {
+  const navigate = useNavigate();
+
   return (
     <>
       <Container>
@@ -12,14 +16,22 @@ function App() {
         </Header>
 
         <ActionBlock>
-          <SearchBar />
-          <CartButton>
+          <SearchBar placeholder="책 제목을 검색해보세요" />
+          <CartButton onClick={() => navigate("/cart")}>
             <CartIconImg src={CartIcon} alt="장바구니 아이콘" />
             <ItemCount></ItemCount>
           </CartButton>
         </ActionBlock>
 
-        <BookList></BookList>
+        <BookList>
+          <BookItem
+            rightBlock={
+              <AddBtn>
+                <img src={plus} />
+              </AddBtn>
+            }
+          />
+        </BookList>
       </Container>
     </>
   );
@@ -29,11 +41,11 @@ export default App;
 
 const Container = styled.div`
   display: flex;
-  width: 56.25rem;
-  max-width: 56.25rem;
-  padding: 0 2rem 5rem 2rem;
+  width: min(56.25rem, calc(100% - 4rem));
+  margin: 0 auto;
+  padding: 0 0 5rem 0;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
 `;
 
 const Header = styled.div`
@@ -41,7 +53,7 @@ const Header = styled.div`
   padding: 3.25rem 0 0.5rem 0;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.38rem;
+  gap: 0.37rem;
 `;
 
 const Title = styled.p`
@@ -49,6 +61,7 @@ const Title = styled.p`
   font-size: 1.75rem;
   font-weight: 800;
   line-height: 1.75rem; /* 100% */
+  margin: 0;
 `;
 
 const SubTitle = styled.p`
@@ -56,19 +69,23 @@ const SubTitle = styled.p`
   font-size: 0.8125rem;
   font-weight: 400;
   line-height: 1.21875rem; /* 150% */
+  margin: 0;
 `;
 
 const ActionBlock = styled.div`
   display: flex;
+  width: 100%;
   padding: 1rem 0;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1.5px solid #ede8e3;
+  box-sizing: border-box;
 `;
 
 const SearchBar = styled.input`
   display: flex;
   max-width: 30rem;
+  width: 30rem;
   padding: 0.625rem 1rem;
   align-items: center;
   border-radius: 0.75rem;
@@ -91,6 +108,11 @@ const CartButton = styled.button`
   border: 1.5px solid #ede8e3;
   background: #fff;
   position: relative;
+  cursor: pointer;
+
+  color: rgba(26, 21, 18, 0.5);
+  font-size: 0.875rem;
+  font-weight: 400;
 `;
 
 const CartIconImg = styled.img`
@@ -106,8 +128,9 @@ const ItemCount = styled.p`
   justify-content: center;
   align-items: center;
   position: absolute;
-  right: -0.28125rem;
-  top: -0.28125rem;
+  right: -0.125rem;
+  top: -0.125rem;
+  transform: translate(15%, -15%);
   border-radius: 62.4375rem;
   background: #d4845a;
 
@@ -116,14 +139,33 @@ const ItemCount = styled.p`
   font-size: 0.6875rem;
   font-weight: 700;
   line-height: 0.6875rem; /* 100% */
+  margin: 0;
 `;
 
 const BookList = styled.div`
   display: flex;
-  width: 52.25rem;
-  height: 69.6875rem;
+  width: 100%;
   padding-top: 0.75rem;
   flex-direction: column;
   align-items: flex-start;
   overflow-y: auto;
+`;
+
+const AddBtn = styled.button`
+  border: none;
+  display: flex;
+  width: 2.5rem;
+  height: 2.5rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1.25rem;
+  background: #d4845a;
+  box-shadow: 0 2px 8px 0 rgba(212, 132, 90, 0.35);
+  cursor: pointer;
+
+  img {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+  }
 `;

@@ -1,13 +1,18 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import back from "../assets/back.svg";
+import deleteBtn from "../assets/delete.svg";
+import BookItem from "../components/BookItem";
 
 function CartPage() {
+  const navigate = useNavigate();
+
   return (
     <>
       <Container>
         <MainContent>
           <Header>
-            <BackBtn>
+            <BackBtn type="button" onClick={() => navigate(-1)}>
               <BackImg src={back} alt="뒤로가기 아이콘" />
             </BackBtn>
             <HeaderTextBlock>
@@ -16,7 +21,22 @@ function CartPage() {
             </HeaderTextBlock>
           </Header>
 
-          <CartList></CartList>
+          <CartList>
+            <BookItem
+              rightBlock={
+                <Right>
+                  <QuantityBlock>
+                    <Minus>-</Minus>
+                    <Quantity></Quantity>
+                    <Plus>+</Plus>
+                  </QuantityBlock>
+                  <DeleteBtn>
+                    <DeleteImg src={deleteBtn} alt="삭제 아이콘" />
+                  </DeleteBtn>
+                </Right>
+              }
+            />
+          </CartList>
         </MainContent>
         <Footer>
           <FooterContent>
@@ -44,15 +64,15 @@ const Container = styled.div`
 const MainContent = styled.div`
   flex: 1;
   display: flex;
-  width: 56.25rem;
-  max-width: 56.25rem;
-  min-height: 44.6875rem;
-  padding: 0 2rem;
+  width: min(56.25rem, calc(100% - 4rem));
+  margin: 0 auto;
+  padding: 0;
   flex-direction: column;
   align-items: flex-start;
 `;
 
 const Header = styled.div`
+  width: 100%;
   display: flex;
   padding: 3rem 0 1.25rem 0;
   align-items: center;
@@ -62,19 +82,23 @@ const Header = styled.div`
 
 const BackBtn = styled.button`
   display: flex;
-  width: 2.375rem;
-  height: 2.375rem;
+  width: 2.25rem;
+  height: 2.25rem;
   justify-content: center;
   align-items: center;
   border-radius: 0.625rem;
   border: 1.5px solid #ede8e3;
   background: #fff;
+  cursor: pointer;
+  flex-shrink: 0;
 `;
 
 const BackImg = styled.img`
-  width: 1.125rem;
-  height: 1.125rem;
+  display: block;
+  width: 0.75rem;
+  height: 0.75rem;
   flex-shrink: 0;
+  object-fit: contain;
 `;
 
 const HeaderTextBlock = styled.div`
@@ -100,12 +124,103 @@ const SubTitle = styled.p`
 `;
 
 const CartList = styled.div`
+  width: 100%;
   flex: 1;
   display: flex;
   padding-bottom: 2rem;
   flex-direction: column;
   align-items: flex-start;
   overflow-y: auto;
+`;
+
+const Right = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.25rem;
+  margin-left: auto;
+`;
+
+const QuantityBlock = styled.div`
+  display: flex;
+  width: 6.4375rem;
+  height: 2.3125rem;
+  align-items: center;
+  border-radius: 0.625rem;
+  border: 1.5px solid #ede8e3;
+  box-sizing: border-box;
+`;
+
+const Minus = styled.button`
+  border: none;
+  cursor: pointer;
+  background: none;
+
+  display: flex;
+  width: 2.125rem;
+  height: 2.125rem;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+
+  color: #7a6b5e;
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.6875rem; /* 150% */
+`;
+
+const Quantity = styled.p`
+  display: flex;
+  width: 2rem;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-right: 1px solid #ede8e3;
+  border-left: 1px solid #ede8e3;
+  box-sizing: border-box;
+  margin: 0;
+
+  color: #1a1512;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 1;
+`;
+
+const Plus = styled.button`
+  border: none;
+  cursor: pointer;
+  background: none;
+
+  display: flex;
+  width: 2.125rem;
+  height: 2.125rem;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+`;
+
+const DeleteBtn = styled.button`
+  border: none;
+  cursor: pointer;
+  background: none;
+
+  display: flex;
+  width: 2.125rem;
+  height: 2.125rem;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5rem;
+  border: 1.5px solid #ede8e3;
+`;
+
+const DeleteImg = styled.img`
+  display: block;
+  width: 0.875rem;
+  height: 0.875rem;
+  object-fit: contain;
 `;
 
 const Footer = styled.div`
@@ -126,8 +241,8 @@ const Footer = styled.div`
 
 const FooterContent = styled.div`
   display: flex;
-  width: 56.25rem;
-  max-width: 56.25rem;
+  width: min(56.25rem, calc(100% - 4rem));
+  margin: 0 auto;
   justify-content: space-between;
   align-items: center;
 `;
@@ -164,6 +279,7 @@ const PriceText = styled.span`
 `;
 
 const PurchaseBtn = styled.button`
+  border: none;
   display: flex;
   padding: 0.875rem 3rem;
   flex-direction: column;
@@ -179,4 +295,5 @@ const PurchaseBtn = styled.button`
   font-weight: 700;
   line-height: 1.5rem; /* 150% */
   letter-spacing: -0.0125rem;
+  cursor: pointer;
 `;

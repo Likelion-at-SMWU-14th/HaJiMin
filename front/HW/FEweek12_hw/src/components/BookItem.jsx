@@ -24,16 +24,20 @@ const BookItem = ({ book, rightBlock }) => {
 export default BookItem;
 
 const BookContainer = styled.div`
+  width: 100%;
   display: flex;
   padding: 1.25rem 0.25rem;
   justify-content: space-between;
   align-items: center;
   gap: 1.25rem;
   border-bottom: 1px solid #ede8e3;
+  box-sizing: border-box;
 `;
 
 const BookInfo = styled.div`
   display: flex;
+  flex: 1;
+  min-width: 0;
   gap: 1.25rem;
 `;
 
@@ -51,12 +55,13 @@ const BookImgBox = styled.div`
 const BookImg = styled.img`
   width: 100%;
   flex-shrink: 0;
-  contain: object-fit;
+  object-fit: contain;
 `;
 
 const BookTextBlock = styled.div`
   display: flex;
-  width: 42.875rem;
+  flex: 1;
+  min-width: 0;
   flex-direction: column;
   align-items: flex-start;
 `;
