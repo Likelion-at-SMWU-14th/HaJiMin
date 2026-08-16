@@ -3,9 +3,19 @@ import CartIcon from "./assets/cart-icon.svg";
 import plus from "./assets/plus.svg";
 import BookItem from "./components/BookItem";
 import { useNavigate } from "react-router-dom";
+import { useBookStore } from "./store/store";
 
 function App() {
   const navigate = useNavigate();
+  const results = useBookStore((s) => s.results);
+  const isLoading = useBookStore((s) => s.isLoading);
+  const error = useBookStore((s) => s.error);
+  const search = useBookStore((s) => s.search);
+
+  // 초기 진입 시 소설(한국어)로 자동 검색
+  useEffect(() => {
+    search("subject:fiction", "ko");
+  }, []);
 
   return (
     <>
