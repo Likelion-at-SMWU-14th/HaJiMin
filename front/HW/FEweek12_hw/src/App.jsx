@@ -2,16 +2,23 @@ import styled from "styled-components";
 import CartIcon from "./assets/cart-icon.svg";
 import plus from "./assets/plus.svg";
 import BookItem from "./components/BookItem";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useBookStore from "./store/store";
 
 function App() {
   const navigate = useNavigate();
+  const [searchText, setSearchText] = useState("");
   const results = useBookStore((s) => s.results);
   const isLoading = useBookStore((s) => s.isLoading);
   const error = useBookStore((s) => s.error);
   const search = useBookStore((s) => s.search);
+
+  const handleSearch = () => {
+    const trimmed = searchText.trim();
+    if (!trimmed) return;
+    search(trimmed, "ko");
+  };
 
   // 초기 진입 시 소설(한국어)로 자동 검색
   useEffect(() => {
@@ -27,12 +34,25 @@ function App() {
         </Header>
 
         <ActionBlock>
-          <SearchBar placeholder="책 제목을 검색해보세요" />
+          <SearchBar
+            value={searchText}
+            placeholder="책 제목을 검색해보세요"
+            onChange={(e) => setSearchText(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                handleSearch();
+              }
+            }}
+          />
           <CartButton onClick={() => navigate("/cart")}>
             <CartIconImg src={CartIcon} alt="장바구니 아이콘" />
             <ItemCount></ItemCount>
           </CartButton>
         </ActionBlock>
+
+        {isLoading && <StatusText>검색 중...</StatusText>}
+        {error && <StatusText error>{error}</StatusText>}
 
         <BookList>
           {results.map((book) => (
@@ -158,6 +178,13 @@ const ItemCount = styled.p`
   font-weight: 700;
   line-height: 0.6875rem; /* 100% */
   margin: 0;
+`;
+
+const StatusText = styled.p`
+  margin: 0.75rem 0 0;
+  color: ${(props) => (props.error ? "#d14b4b" : "#7a6a5c")};
+  font-size: 0.875rem;
+  font-weight: 500;
 `;
 
 const BookList = styled.div`
