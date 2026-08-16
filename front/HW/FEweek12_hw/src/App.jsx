@@ -15,7 +15,7 @@ function App() {
 
   // 초기 진입 시 소설(한국어)로 자동 검색
   useEffect(() => {
-    search("subject:fiction", "ko");
+    search("드라마", "ko");
   }, []);
 
   return (
@@ -35,13 +35,20 @@ function App() {
         </ActionBlock>
 
         <BookList>
-          <BookItem
-            rightBlock={
-              <AddBtn>
-                <img src={plus} />
-              </AddBtn>
-            }
-          />
+          {results.map((book) => (
+            <BookItem
+              key={
+                book.id ||
+                `${book.volumeInfo?.title}-${book.volumeInfo?.authors?.[0]}`
+              }
+              book={book}
+              rightBlock={
+                <AddBtn>
+                  <img src={plus} alt="책 추가" />
+                </AddBtn>
+              }
+            />
+          ))}
         </BookList>
       </Container>
     </>

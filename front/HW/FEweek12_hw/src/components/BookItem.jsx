@@ -1,18 +1,23 @@
 import styled from "styled-components";
 
 const BookItem = ({ book, rightBlock }) => {
+  const { title, authors, publishedDate, imageLinks } = book.volumeInfo ?? {};
+  const price = book.saleInfo?.listPrice;
+
   return (
     <>
       <BookContainer>
         <BookInfo>
           <BookImgBox>
-            <BookImg />
+            <BookImg src={imageLinks?.thumbnail} alt={title} />
           </BookImgBox>
           <BookTextBlock>
-            <BookTitle></BookTitle>
-            <BookAuthor></BookAuthor>
-            <BookDate></BookDate>
-            <BookPrice></BookPrice>
+            <BookTitle>{title ?? "제목 없음"}</BookTitle>
+            <BookAuthor>{authors?.[0] ?? "작가 미상"}</BookAuthor>
+            <BookDate>{publishedDate ?? "출간일 미상"}</BookDate>
+            <BookPrice>
+              {price ? `${price.amount.toLocaleString()}원` : "가격 정보 없음"}
+            </BookPrice>
           </BookTextBlock>
         </BookInfo>
         {rightBlock}
