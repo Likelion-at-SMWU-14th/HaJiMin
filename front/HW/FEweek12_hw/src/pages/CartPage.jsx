@@ -3,9 +3,17 @@ import { useNavigate } from "react-router-dom";
 import back from "../assets/back.svg";
 import deleteBtn from "../assets/delete.svg";
 import BookItem from "../components/BookItem";
+import { useCartStore } from "../store/store";
 
 function CartPage() {
   const navigate = useNavigate();
+  const cartItems = useCartStore((state) => state.cartItems);
+  const removeCart = useCartStore((state) => state.removeCart);
+  const clearCart = useCartStore((state) => state.clearCart);
+  const increaseQuantity = useCartStore((state) => state.increaseQuantity);
+  const decreaseQuantity = useCartStore((state) => state.decreaseQuantity);
+  const totalPrice = useCartStore((state) => state.getTotalPrice());
+  const totalQuantity = useCartStore((state) => state.getTotalQuantity());
 
   return (
     <>
@@ -17,36 +25,66 @@ function CartPage() {
             </BackBtn>
             <HeaderTextBlock>
               <Title>장바구니</Title>
-              <SubTitle>총 3권</SubTitle>
+              <SubTitle>총 {totalQuantity}권</SubTitle>
             </HeaderTextBlock>
           </Header>
 
           <CartList>
-            <BookItem
-              rightBlock={
-                <Right>
-                  <QuantityBlock>
-                    <Minus>-</Minus>
-                    <Quantity></Quantity>
-                    <Plus>+</Plus>
-                  </QuantityBlock>
-                  <DeleteBtn>
-                    <DeleteImg src={deleteBtn} alt="삭제 아이콘" />
-                  </DeleteBtn>
-                </Right>
-              }
-            />
+            {cartItems.length === 0 ? (
+              <EmptyText>장바구니가 비어 있습니다.</EmptyText>
+            ) : (
+              cartItems.map((item) => (
+                <BookItem
+                  key={item.id}
+                  book={item.book}
+                  rightBlock={
+                    <Right>
+                      <QuantityBlock>
+                        <Minus
+                          type="button"
+                          onClick={() => decreaseQuantity(item.id)}
+                        >
+                          -
+                        </Minus>
+                        <Quantity>{item.quantity}</Quantity>
+                        <Plus
+                          type="button"
+                          onClick={() => increaseQuantity(item.id)}
+                        >
+                          +
+                        </Plus>
+                      </QuantityBlock>
+                      <DeleteBtn
+                        type="button"
+                        onClick={() => removeCart(item.id)}
+                      >
+                        <DeleteImg src={deleteBtn} alt="삭제 아이콘" />
+                      </DeleteBtn>
+                    </Right>
+                  }
+                />
+              ))
+            )}
           </CartList>
         </MainContent>
+
         <Footer>
           <FooterContent>
             <FooterTextBlock>
               <FooterLabel>총 결제 금액</FooterLabel>
               <TotalPrice>
-                <PriceText></PriceText>원
+                <PriceText>{totalPrice.toLocaleString()}</PriceText>원
               </TotalPrice>
             </FooterTextBlock>
-            <PurchaseBtn>구매하기</PurchaseBtn>
+            <PurchaseBtn
+              type="button"
+              onClick={() => {
+                clearCart();
+                navigate("/");
+              }}
+            >
+              구매하기
+            </PurchaseBtn>
           </FooterContent>
         </Footer>
       </Container>
@@ -59,6 +97,9 @@ export default CartPage;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 5.78rem;
 `;
 
 const MainContent = styled.div`
@@ -69,6 +110,7 @@ const MainContent = styled.div`
   padding: 0;
   flex-direction: column;
   align-items: flex-start;
+  min-height: 0;
 `;
 
 const Header = styled.div`
@@ -131,6 +173,15 @@ const CartList = styled.div`
   flex-direction: column;
   align-items: flex-start;
   overflow-y: auto;
+`;
+
+const EmptyText = styled.p`
+  width: 100%;
+  padding: 2rem 0;
+  text-align: center;
+  color: #9e8e7e;
+  font-size: 0.9375rem;
+  font-weight: 500;
 `;
 
 const Right = styled.div`

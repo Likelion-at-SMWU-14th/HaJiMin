@@ -4,7 +4,7 @@ import plus from "./assets/plus.svg";
 import BookItem from "./components/BookItem";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useBookStore from "./store/store";
+import { useBookStore, useCartStore } from "./store/store";
 
 function App() {
   const navigate = useNavigate();
@@ -13,6 +13,8 @@ function App() {
   const isLoading = useBookStore((s) => s.isLoading);
   const error = useBookStore((s) => s.error);
   const search = useBookStore((s) => s.search);
+  const addCart = useCartStore((s) => s.addCart);
+  const cartItems = useCartStore((s) => s.cartItems);
 
   const handleSearch = () => {
     const trimmed = searchText.trim();
@@ -47,7 +49,7 @@ function App() {
           />
           <CartButton onClick={() => navigate("/cart")}>
             <CartIconImg src={CartIcon} alt="장바구니 아이콘" />
-            <ItemCount></ItemCount>
+            {cartItems.length > 0 && <ItemCount>{cartItems.length}</ItemCount>}
           </CartButton>
         </ActionBlock>
 
@@ -63,7 +65,7 @@ function App() {
               }
               book={book}
               rightBlock={
-                <AddBtn>
+                <AddBtn onClick={() => addCart(book)} type="button">
                   <img src={plus} alt="책 추가" />
                 </AddBtn>
               }
