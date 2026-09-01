@@ -1,0 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+
+body,
+p {
+  font-family: "Pretendard", sans-serif;
+  margin: 0;
+}
