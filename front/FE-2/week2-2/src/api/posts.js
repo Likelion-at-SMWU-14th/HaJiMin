@@ -8,7 +8,7 @@ export const createPost = async (newPost) => {
   return data;
 };
 // Read
-export const getPosts = async () => {
+export const fetchPosts = async () => {
   const { data } = await axios.get(`${BASE_URL}/posts`);
   return data;
 };
