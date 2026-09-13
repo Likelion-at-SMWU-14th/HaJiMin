@@ -1,7 +1,7 @@
 // 회원가입
 export const signUp = async ({ username, password }) => {
   console.log("POST api/users");
-  return true;
+  return username;
 };
 
 // 프로필 수정
