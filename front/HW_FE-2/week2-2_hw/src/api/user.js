@@ -5,7 +5,7 @@ let currentUser = {
 };
 
 // 회원가입
-export const signUp = async ({ username, password }) => {
+export const signUp = async ({ username }) => {
   console.log("POST api/users");
   return username;
 };
@@ -27,4 +27,6 @@ export const fetchMyPage = async (userId) => {
 // 회원 정보 삭제
 export const deleteUser = async (userId) => {
   console.log(`DELETE api/users/${userId}`);
+  currentUser = null;
+  return true;
 };
