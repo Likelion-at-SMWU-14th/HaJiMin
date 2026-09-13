@@ -1,7 +1,7 @@
 import { usePosts } from "../hooks/usePosts";
 
 function PostList() {
-  const data = usePosts();
+  const { data = [] } = usePosts();
 
   return (
     <ul>
