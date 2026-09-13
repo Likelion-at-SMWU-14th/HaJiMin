@@ -1,11 +1,11 @@
 import { useMutation } from "@tanstack/react-query";
-import { signup } from "../api/signup";
+import { signUp } from "../api/user";
 
-export const useCreatePost = () => {
+export const useSignup = () => {
   return useMutation({
-    mutationFn: signup,
+    mutationFn: signUp,
     onSuccess: (data) => {
-      console.log(`${data}환영합니다, ${data}!`);
+      console.log(`${data}님 환영합니다.`);
     },
   });
 };
