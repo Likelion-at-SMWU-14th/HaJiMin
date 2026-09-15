@@ -5,6 +5,7 @@ export const useMyPage = (userId) => {
   return useQuery({
     queryKey: ["myPage", userId],
     queryFn: () => fetchMyPage(userId),
+    enabled: Boolean(userId),
     staleTime: 30 * 1000,
     gcTime: 10 * 60 * 1000,
     retry: 3,

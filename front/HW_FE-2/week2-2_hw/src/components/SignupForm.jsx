@@ -10,9 +10,16 @@ function PostForm() {
     e.preventDefault();
     if (!username.trim() || !password.trim()) return;
 
-    mutate({ username, password });
-    setUsername("");
-    setPassword("");
+    mutate(
+      { username, password },
+      {
+        onSuccess: (data) => {
+          localStorage.setItem("userId", String(data.id));
+          setUsername("");
+          setPassword("");
+        },
+      },
+    );
   };
 
   return (

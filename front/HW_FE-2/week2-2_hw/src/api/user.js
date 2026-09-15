@@ -1,32 +1,32 @@
-let currentUser = {
-  userId: 1,
-  username: "하지민",
-  password: "1234",
-};
+import axios from "axios";
+const BASE_URL = "https://jsonplaceholder.typicode.com";
 
 // 회원가입
-export const signUp = async ({ username }) => {
-  console.log("POST api/users");
-  return username;
+export const signUp = async ({ username, password }) => {
+  const { data } = await axios.post(`${BASE_URL}/users`, {
+    username,
+    password,
+  });
+  return data;
 };
 
 // 프로필 수정
 export const updateProfile = async ({ userId, ...updatedFields }) => {
-  console.log(`PUT api/users/${userId}`, updatedFields);
-  currentUser = { ...currentUser, ...updatedFields };
-  return currentUser;
+  const { data } = await axios.put(
+    `${BASE_URL}/users/${userId}`,
+    updatedFields,
+  );
+  return data;
 };
 
 // 마이페이지 조회
 export const fetchMyPage = async (userId) => {
-  console.log(`GET api/users/${userId}`);
-
-  return currentUser;
+  const { data } = await axios.get(`${BASE_URL}/users/${userId}`);
+  return data;
 };
 
 // 회원 정보 삭제
 export const deleteUser = async (userId) => {
-  console.log(`DELETE api/users/${userId}`);
-  currentUser = null;
-  return true;
+  await axios.delete(`${BASE_URL}/users/${userId}`);
+  return userId;
 };

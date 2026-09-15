@@ -6,7 +6,9 @@ export const useDeleteUser = () => {
 
   return useMutation({
     mutationFn: deleteUser,
-    onSuccess: () => {
+    onSuccess: (userId) => {
+      localStorage.removeItem("userId");
+      queryClient.removeQueries({ queryKey: ["myPage", userId] });
       queryClient.invalidateQueries({ queryKey: ["myPage"] });
       console.log("회원 정보가 삭제되었습니다.");
     },

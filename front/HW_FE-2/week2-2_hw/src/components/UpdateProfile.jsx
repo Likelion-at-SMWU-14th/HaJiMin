@@ -5,11 +5,11 @@ function UpdateProfileForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { mutate } = useUpdateProfile();
-  const userId = 1; // 예시 아이디 값
+  const userId = Number(localStorage.getItem("userId"));
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!username.trim() || !password.trim()) return;
+    if (!userId || !username.trim() || !password.trim()) return;
 
     mutate({ userId, username, password });
     setUsername("");

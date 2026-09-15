@@ -5,7 +5,7 @@ export const useSignup = () => {
   return useMutation({
     mutationFn: signUp,
     onSuccess: (data) => {
-      console.log(`${data}님 환영합니다.`);
+      console.log(`${data.username}님 환영합니다.`);
     },
   });
 };
