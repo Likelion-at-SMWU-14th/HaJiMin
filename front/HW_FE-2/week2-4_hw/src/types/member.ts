@@ -1,5 +1,3 @@
-import type { Dispatch, SetStateAction } from "react";
-
 export type Part = "프론트엔드" | "백엔드" | "기획/디자인";
 
 export type Role = "아기사자" | "운영진";
@@ -13,5 +11,5 @@ export interface Member {
 
 export interface PartContextValue {
   part: Part | "";
-  setPart: Dispatch<SetStateAction<Part | "">>;
+  setPart: (part: Part | "") => void;
 }
