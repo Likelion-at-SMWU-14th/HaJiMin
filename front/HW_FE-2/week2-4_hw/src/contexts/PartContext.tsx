@@ -1,10 +1,14 @@
-import { createContext } from "react";
-import { useState } from "react";
+import { createContext, useState, type ReactNode } from "react";
+import type { Part, PartContextValue } from "../types/member";
 
-const PartContext = createContext();
+const PartContext = createContext<PartContextValue | null>(null);
 
-export const PartContextProvider = ({ children }) => {
-  const [part, setPart] = useState("");
+interface PartContextProviderProps {
+  children: ReactNode;
+}
+
+export const PartContextProvider = ({ children }: PartContextProviderProps) => {
+  const [part, setPart] = useState<Part | "">("");
 
   return (
     <PartContext.Provider value={{ part, setPart }}>

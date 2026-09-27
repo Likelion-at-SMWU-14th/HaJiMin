@@ -1,6 +1,6 @@
-import { Member } from "./types/member";
+import type { Member } from "./types/member";
 
-const members: Member[] = [
+const member: Member[] = [
   // 🦁 아기사자 (기획/디자인)
   {
     id: 1,
