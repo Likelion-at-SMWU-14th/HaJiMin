@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Content from "./components/Content";
 import { styled } from "styled-components";
 import usePart from "./hooks/usePart";
