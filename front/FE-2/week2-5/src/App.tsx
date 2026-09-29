@@ -1,5 +1,10 @@
 import { useEffect, useState, type SubmitEvent } from "react";
-import { createRecipe, deleteRecipe, getRecipes } from "./api/recipes";
+import {
+  createRecipe,
+  deleteRecipe,
+  getErrorMessage,
+  getRecipes,
+} from "./api/recipes";
 import RecipeCard from "./components/RecipeCard";
 import RecipeForm from "./components/RecipeForm";
 import * as S from "./styles/styled";
@@ -17,12 +22,15 @@ export default function App() {
     null,
   );
 
+  const [error, setError] = useState("");
+
   async function loadRecipes() {
     setLoading(true);
+    setError("");
     try {
       setRecipes(await getRecipes());
     } catch (error: unknown) {
-      console.error(error);
+      setError(getErrorMessage(error));
     } finally {
       setLoading(false);
     }
@@ -30,12 +38,13 @@ export default function App() {
 
   async function handleCreate(values: CreateRecipeRequest): Promise<boolean> {
     setSaving(true);
+    setError("");
     try {
       const createdRecipe = await createRecipe(values);
       setRecipes((currentRecipes) => [...currentRecipes, createdRecipe]);
       return true;
     } catch (error: unknown) {
-      console.error(error);
+      setError(getErrorMessage(error));
       return false;
     } finally {
       setSaving(false);
@@ -44,13 +53,14 @@ export default function App() {
 
   async function handleDelete(id: Recipe["id"]) {
     setDeletingId(id);
+    setError("");
     try {
       await deleteRecipe(id);
       setRecipes((currentRecipes) =>
         currentRecipes.filter((recipe) => recipe.id !== id),
       );
     } catch (error: unknown) {
-      console.error(error);
+      setError(getErrorMessage(error));
     } finally {
       setDeletingId(null);
     }
@@ -68,6 +78,7 @@ export default function App() {
 
   return (
     <S.Page>
+      {error && <S.ErrorNotice role="alert">{error}</S.ErrorNotice>}
       <S.Layout>
         <S.ListPanel>
           <S.SectionHeading>
