@@ -3,9 +3,15 @@ import * as S from "../styles/styled.ts";
 
 interface RecipeCardProps {
   recipe: Recipe;
+  disabled: boolean;
+  onDelete: (id: Recipe["id"]) => void;
 }
 
-export default function RecipeCard({ recipe }: RecipeCardProps) {
+export default function RecipeCard({
+  recipe,
+  disabled,
+  onDelete,
+}: RecipeCardProps) {
   return (
     <S.Card $ready={false}>
       <S.CardTitle>
@@ -18,6 +24,17 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
 
       <S.CardLabel>조리법</S.CardLabel>
       <S.CardText>{recipe.instructions}</S.CardText>
+
+      <S.CardActions>
+        <S.CardButton
+          type="button"
+          $danger
+          disabled={disabled}
+          onClick={() => onDelete(recipe.id)}
+        >
+          삭제
+        </S.CardButton>
+      </S.CardActions>
     </S.Card>
   );
 }
