@@ -1,5 +1,10 @@
 import axios from "axios";
-import type { Recipe } from "../types/recipe.ts";
+import type { CreateRecipeRequest, Recipe } from "../types/recipe.ts";
+
+export async function createRecipe(body: CreateRecipeRequest): Promise<Recipe> {
+  const response = await api.post<Recipe>("/recipes", body);
+  return response.data;
+}
 
 const api = axios.create({
   baseURL: "http://localhost:8000",
