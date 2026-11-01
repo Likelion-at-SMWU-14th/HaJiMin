@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import ExpenseInput from "./components/ExpenseInput.vue";
+import ExpenseItem from "./components/ExpenseItem.vue";
 
 const expenseList = ref([
   { id: 1, item: "커피", price: 4500 },
@@ -36,10 +37,12 @@ function deleteExpense(id) {
 
   <h3>소비 목록</h3>
   <ul>
-    <li v-for="expense in expenseList" :key="expense.id">
-      <span>{{ expense.item }} - {{ expense.price }}원</span>
-      <button @click="deleteExpense(expense.id)">삭제</button>
-    </li>
+    <ExpenseItem
+      v-for="expense in expenseList"
+      :key="expense.id"
+      :expense="expense"
+      @delete-expense="deleteExpense"
+    />
   </ul>
 </template>
 
