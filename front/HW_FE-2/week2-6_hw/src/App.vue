@@ -1,5 +1,6 @@
 <script setup>
 import { ref, computed } from "vue";
+import ExpenseInput from "./components/ExpenseInput.vue";
 
 const expenseList = ref([
   { id: 1, item: "커피", price: 4500 },
@@ -11,9 +12,7 @@ const totalPrice = computed(() => {
   return expenseList.value.reduce((total, expense) => total + expense.price, 0);
 });
 
-const newExpense = ref({ item: "", price: 0 });
-
-function addExpense() {
+function addExpense(newExpense) {
   if (!newExpense.value.item.trim || newExpense.value.price <= 0) return;
   expenseList.value.push({
     id: Date.now(),
@@ -32,19 +31,7 @@ function deleteExpense(id) {
   <h1>오늘의 소비 기록🛍️</h1>
   <p>오늘의 총 소비 금액: {{ totalPrice }}원</p>
   <br />
-  <div>
-    <input
-      type="text"
-      v-model="newExpense.item"
-      placeholder="소비 항목을 입력하세요"
-    />
-    <input
-      type="number"
-      v-model="newExpense.price"
-      placeholder="소비 금액을 입력하세요"
-    />
-    <button @click="addExpense">추가</button>
-  </div>
+  <ExpenseInput @add-expense="addExpense" />
   <hr />
 
   <h3>소비 목록</h3>
