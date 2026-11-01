@@ -1,5 +1,5 @@
 <script setup>
-import { re, computed } from "vue";
+import { ref, computed } from "vue";
 
 const expenseList = ref([
   { id: 1, item: "커피", price: 4500 },
@@ -7,9 +7,25 @@ const expenseList = ref([
   { id: 3, item: "간식", price: 3000 },
 ]);
 
-totalPrice.value = computed(() => {
+const totalPrice = computed(() => {
   return expenseList.value.reduce((total, expense) => total + expense.price, 0);
 });
+
+const newExpense = ref({ item: "", price: 0 });
+
+function addExpense() {
+  if (!newExpense.value.item.trim || newExpense.value.price <= 0) return;
+  expenseList.value.push({
+    id: Date.now(),
+    item: newExpense.value.item,
+    price: newExpense.value.price,
+  });
+  newExpense.value = { item: "", price: 0 };
+}
+
+function deleteExpense(id) {
+  expenseList.value = expenseList.value.filter((expense) => expense.id !== id);
+}
 </script>
 
 <template>
@@ -17,9 +33,17 @@ totalPrice.value = computed(() => {
   <p>오늘의 총 소비 금액: {{ totalPrice }}원</p>
   <br />
   <div>
-    <input type="text" placeholder="소비 항목을 입력하세요" />
-    <input type="number" placeholder="소비 금액을 입력하세요" />
-    <button>추가</button>
+    <input
+      type="text"
+      v-model="newExpense.item"
+      placeholder="소비 항목을 입력하세요"
+    />
+    <input
+      type="number"
+      v-model="newExpense.price"
+      placeholder="소비 금액을 입력하세요"
+    />
+    <button @click="addExpense">추가</button>
   </div>
   <hr />
 
@@ -27,7 +51,7 @@ totalPrice.value = computed(() => {
   <ul>
     <li v-for="expense in expenseList" :key="expense.id">
       <span>{{ expense.item }} - {{ expense.price }}원</span>
-      <button>삭제</button>
+      <button @click="deleteExpense(expense.id)">삭제</button>
     </li>
   </ul>
 </template>
