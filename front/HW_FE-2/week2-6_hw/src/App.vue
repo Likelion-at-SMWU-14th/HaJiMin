@@ -14,7 +14,7 @@ const totalPrice = computed(() => {
 });
 
 function addExpense(newExpense) {
-  if (!newExpense.value.item.trim || newExpense.value.price <= 0) return;
+  if (!newExpense.value.item.trim() || newExpense.value.price <= 0) return;
   expenseList.value.push({
     id: Date.now(),
     item: newExpense.value.item,
